@@ -1,63 +1,81 @@
-<h1> Add new Asset Type</h1>
-
-
-<label for="assetType"> Enter the new asset
-<input type="text" id="assetType" name="assetType" [(ngModel)]="assetValue">
-</label>
-
-<button type="submit" (click)="onSubmit()" style="size:100px"><strong>Submit</strong></button>
-
-<br><br><h2>Existing Assets</h2>
-<div class = "row" *ngFor="let asset of assetTypes"> 
-    <input type="text" id="assetType" name="assetType" value="{{asset.name}}" [disabled]=true> <br>
-
+<div class="row" *ngIf="show" >
+  <h2> Add new Asset Type</h2>
+  <div class="col-md-12">
+      <label for="assetType">Enter asset Type
+        <input type="text" id="assetType" name="assetType" [(ngModel)]="assetValue"/></label><br/><br/>
+        <button type="submit" (click)="onSubmit()">Submit</button>&nbsp;&nbsp;  
+        <button type="cancel" (click)="onCancel()">Cancel</button>             
+  </div> 
+</div>
+<div class="row" *ngIf="!show">
+  <button name="add_asset" (click)="onClick()">Add Asset</button>
 </div>
 
-<div class="col-md-4">
+
+<!-- <h2>Existing Assets</h2><br/>
+<div class = "row" *ngFor="let asset of assetTypes" style="margin-top:0"> 
+    <input type="text" id="assetType" name="assetType" value="{{asset.name}}" [disabled]=true> <br>
+</div><br/> -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-2">
+      <div class="input-group flex-nowrap" style="width:80%">
+        <span class="input-group-text" id="addon-wrapping">Product Type</span>
+      </div>
+    </div>
+    <div class="col-md-4"style="width:140%;">
+      <select class="form-control"  [(ngModel)]="asset_type">
+        <option *ngFor="let asset of assetTypes" [value]="asset.id">{{asset.name}}</option>
+    </select>
+    </div>                
+  </div>
+</div>
+
+
+<!-- <div class="col-md-4">
     <label for="product_type">Product Type</label>
     <select id="product_type" name="product_type" [(ngModel)]="asset_type">
       <option *ngFor="let asset of assetTypes"[value]="asset.id">{{asset.name}}</option>
     </select>
-  </div>
+</div><br/><br/> -->
 
 <form (ngSubmit)="onSave(f)" #f="ngForm" *ngIf="asset_type">
-    <div class="row">
+  <div style="border:1px solid grey;margin-top:2em;">
+    <div class="col-md-12">
         <div class="col-md-4">
             <label for="asset_number">Asset Number</label>
-            <input id="asset_number" type="text" name="asset_number" [ngModel]>
-              
-          </div> 
-     
+            <input id="asset_number" type="text" name="asset_number" [ngModel]>             
+        </div> 
       <div class="col-md-4">
         <label for="Brand">Brand</label>
         <select id="brand" name="brand" [ngModel]>
           <option>LENOVO</option>
           <option>HP</option>
         </select>
-      </div> 
-    </div><br/>
-    <div class="row" >
-      <div class="col-md-4" *ngIf="asset_type==1">
-        <label for="processor">Processor</label>
-        <input id="processor" type="text" name="processor" [ngModel]>
-      </div>
-      <div class="col-md-4" *ngIf="asset_type==1">
-        <label for="product_no" >Product Number</label>
-        <input id="product_no" type="text" name="product_no" [ngModel]>
       </div>
       <div class="col-md-4">
         <label for="laptop_no">Serial Number</label>
         <input id="laptop_no" type="text" name="laptop_no" [ngModel]>
-      </div>      
-    </div><br/>
-    <div class="row">
+      </div>   
+    </div>
+    <div class="col-md-12" >      
+      <div class="col-md-4">
+        <label for="model_no">Model Number</label>
+        <input id="model_no" type="text" name="model_no" [ngModel]>
+      </div>
+      <div class="col-md-4" *ngIf="asset_type==1">
+        <label for="product_no" >Product Number</label>
+        <input id="product_no" type="text" name="product_no" [ngModel]>
+      </div>        
       <div class="col-md-4" *ngIf="asset_type==1">
         <label for="RAM">RAM</label>
         <select id="ram" name="ram" [ngModel]>
           <option>8GB</option>
           <option>32Gb</option>
         </select>
-      </div>
+      </div>    
+    </div>
+    <div class="col-md-12">      
       <div class="col-md-4" *ngIf="asset_type==1">
         <label for="HDD">HDD</label>
         <select id="hdd" name="hdd" [ngModel]>
@@ -71,13 +89,9 @@
         </select>
       </div>
       <div class="col-md-4" *ngIf="asset_type==1">
-        <label for="cd_rom">CD ROM</label>
-        <select id="cd_rom" name="cd_rom" [ngModel]>
-          <option>DVD RW</option>
-        </select>
-      </div>
-    </div><br/>
-    <div class="row">
+        <label for="processor">Processor</label>
+        <input id="processor" type="text" name="processor" [ngModel]>
+      </div>   
       <div class="col-md-4" *ngIf="asset_type==1">
         <label for="os">OS</label>
         <select id="os" name="os" [ngModel]>
@@ -86,25 +100,23 @@
           <option>Windows 7 Enterprise</option>
         </select>
       </div>
-      <div class="col-md-4">
-        <label for="model_no">Model Number</label>
-        <input id="model_no" type="text" name="model_no" [ngModel]>
-      </div>
-      <!-- <div class="col-md-4">
-        <label for="date">Year</label>
-        <input id="date" type="text" name="date" [ngModel]>
-      </div> -->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="assetDate">Hire Date <span
-                class="glyphicon glyphicon-calendar"></span></label>
-        <div class="col-md-8">
-            <input type="text" id="assetDate" name="assetDate" placeholder="YYYY-MM-DD"  class="form-control input-md"  [ngModel]>
-        </div>
     </div>
-      
-    </div>
-    <button type="submit"  style="size:100px"><strong>Save</strong></button>
-
+    <div class="col-md-12">      
+      <div class="col-md-4" *ngIf="asset_type==1">
+        <label for="cd_rom">CD ROM</label>
+        <select id="cd_rom" name="cd_rom" [ngModel]>
+          <option>DVD RW</option>
+        </select>
+      </div>    
+    </div>    
+    <label style="width:10%">Asset Date</label>
+        <mat-form-field appearance="fill">
+          <input matInput [matDatepicker]="picker" placeholder="Select Date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>    
+    <div class="col-md-12">
+      <button type="submit"  style="size:100px"><strong>Save</strong></button>
+    </div> 
+  </div>   
 </form>
-
-<br/>

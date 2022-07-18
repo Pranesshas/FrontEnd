@@ -10,8 +10,9 @@ import { AssetsService } from 'src/app/Services/assets.service';
   styleUrls: ['./asset-type.component.css']
 })
 export class AssetTypeComponent implements OnInit {
+  show:boolean=false;
   assetValue : String="";
-  assetTypes : any;
+  assetTypes : [{}];
   asset_type : number;
   constructor(private assetsService:AssetsService,
     ) { }
@@ -20,20 +21,27 @@ export class AssetTypeComponent implements OnInit {
     this.getAssetTypes();
   }
   
+  onClick()
+  {
+    this.show=true;
+  }
 
-
+  onCancel()
+  {
+    this.show=false;
+  }
+ 
   getAssetTypes(){
     this.assetsService.getAssetTypes().subscribe((data)=>{
       debugger
-      
       this.assetTypes= data;
       console.log(this.assetTypes);
     })
-
-
   }
+  
   onSubmit(){
     this.saveAssets();
+    this.show=false;
   }
 
   onSearch(form:NgForm){
