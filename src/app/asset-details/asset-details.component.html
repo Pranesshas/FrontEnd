@@ -16,7 +16,16 @@
           <label for="Brand">Brand</label>
           <select id="brand" name="brand" [ngModel]>
             <option>LENOVO</option>
+            <option>Lenovo ThinkBook</option>
+            <option>Lenovo V15 G2 ITL</option>
+            <option>Lenovo</option>
+            <option>Dell</option>
             <option>HP</option>
+            <option>LENOVO</option>
+            <option>HP 240 G8</option>
+            <option>HP 240 G7</option>
+            <option>HP Pavilion</option>
+            <option>Inspiron N5010 A10</option>
           </select>
         </div> 
       </div><br/>
@@ -37,21 +46,25 @@
       <div class="row">
         <div class="col-md-4">
           <label for="RAM">RAM</label>
-          <select id="ram" name="ram" [ngModel]>
-            <option>8GB</option>
-            <option>32Gb</option>
+          <select id="ram" name="ram" [ngModel]>    
+            <option>32 Gb</option>
+            <option>16 GB</option>
+            <option>8 GB</option>
+            <option>4 GB</option>
+            <option>4 Gb</option>
           </select>
         </div>
         <div class="col-md-4">
           <label for="HDD">HDD</label>
           <select id="hdd" name="hdd" [ngModel]>
-            <option>250GB</option>
-            <option>256GB</option>
-            <option>320GB</option>
-            <option>500GB</option>
-            <option>750GB</option>
-            <option>512GB</option>
-            <option>1TB</option>
+            <option>1 TB</option>
+            <option>750 GB</option>
+            <option>512 GB</option>
+            <option>512 GB SSD</option>
+            <option>500 GB</option>
+            <option>320 GB</option>
+            <option>250 GB</option>
+            <option>256 SSD</option>
           </select>
         </div>
         <div class="col-md-4">
@@ -66,30 +79,28 @@
           <label for="os">OS</label>
           <select id="os" name="os" [ngModel]>
             <option>Windows 10 Professional</option>
-            <option>Windows 7 Ultimate</option>
-            <option>Windows 7 Enterprise</option>
+            <option>Win-10 Enterprise</option>
           </select>
         </div>
         <div class="col-md-4">
           <label for="model_no">Model Number</label>
           <input id="model_no" type="text" name="model_no" [ngModel]>
         </div>
+        <div class="col-md-4">
+          <label for="asset_number">Asset Number</label>
+          <input id="asset_number" type="text" name="asset_number" [ngModel]>
+        </div>
         <!-- <div class="col-md-4">
           <label for="date">Year</label>
           <input id="date" type="text" name="date" [ngModel]>
         </div> -->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="assetDate">Asset Date <span
-                  class="glyphicon glyphicon-calendar"></span></label>
-          <div class="col-md-8">
-              <input type="text" id="date" name="date" placeholder="YYYY-MM-DD"  class="form-control input-md"  [ngModel]>
-          </div>
-          <div class="col-md-4">
-            <label for="asset_number">Asset Number</label>
-            <input id="asset_number" type="text" name="asset_number" [ngModel]>
-          </div>
       </div>
-      </div><br/>
+      <label style="width:10%">Asset Date</label>
+        <mat-form-field appearance="fill">
+          <input matInput [matDatepicker]="picker" name=" asset_date" placeholder="Select Date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> <br/><br/>
       <div class="row">
         <div class="col-md-12">
           <div class="col-md-3">
@@ -127,7 +138,7 @@
         </div>
       </div><br/><br/>
     <div align="center">
-        <button name="submit" value="submit"><strong>Search</strong></button>
+        <button name="submit" value="submit"><strong>Search</strong></button>&nbsp;&nbsp;
         <button name="cancel" value="cancel" (click)="onCancel(f)"><strong>Cancel</strong></button>
     </div>
   </form>
@@ -148,7 +159,6 @@
           <th>CD_ROM</th>
           <th>OS</th>
           <th>Model</th> -->
-
           <th> Product Id</th>
           <th>Product Type</th>
           <th>Make</th>
@@ -157,9 +167,7 @@
           <th>Asset Number</th>
           <th>Notes</th>
           <th>Asset Date</th>
-          <th>Available</th>
-          
-          
+          <th>Available</th>         
         </tr>
       </thead>
       <tbody>
