@@ -1,22 +1,12 @@
 .content
 {
     margin-top: 2em;
-    border: 1.5px solid blue;
+    border:0.5px solid gray;
     height:auto;
-    font-size: 18px;
+    font-size: 15px;
+    border-radius: 4px;
     
 }
-/* .col-md-8
-{
-    height:500px;
-    width:90%;
-}
-.col-md-4
-{
- 
-    height:500px;
-    width:30%;
-} */
 
 #head
 {
@@ -29,3 +19,35 @@ label
     padding:8px;
 }
 
+.rightdiv
+{
+    padding : 3%;
+    width:60%;
+    float: right; 
+    height:600px; 
+    font-size: 16px;
+         
+}
+.leftdiv
+{
+    margin-top: 2em;
+    padding : 1%;
+    width:40%;
+    float: left;  
+    height:auto;
+    border:0.5px solid navy;
+    border-radius: 5px;
+    background-color: azure;
+    box-shadow: 0px 5px 10px;
+    font-size: 15px;
+    
+}
+
+button
+{
+    margin: 1em;
+    width:60px;
+    height:35px;
+    font-size: medium;
+    padding: 1px;   
+}

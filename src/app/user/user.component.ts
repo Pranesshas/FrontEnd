@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../Services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,8 @@ export class UserComponent implements OnInit {
   user_detail:any;
   selectedId : number;
   constructor(private route: ActivatedRoute,
-    private userService:UserService) { }
+    private userService:UserService,
+    private router: Router,) { }
 
   ngOnInit(): void {
     
@@ -23,7 +25,9 @@ export class UserComponent implements OnInit {
       });
       this.getUserDetailsPerId();
   }
-  
+  onClick(id){
+    this.router.navigate(["/map/"+id]);
+  }
 
   getUserDetailsPerId(){
     debugger

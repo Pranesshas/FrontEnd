@@ -1,78 +1,126 @@
 
-<div class="content" style="height:150px">
-    <h3>User Details</h3>
+<div class="leftdiv">
+    <h2>User Details</h2>
     <div class="row">
         <div class="col-md-12">
             <div class="col-md-4">
-                <label id="head">FullName</label>
-                <label>{{user_detail.firstName}}</label>&nbsp;&nbsp;
+                <label>User Id </label>&nbsp;&nbsp;
+            </div>
+            <div class="col-md-8">
+                <label>{{user_detail.id}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label> Username </label>&nbsp;&nbsp;
+            </div>
+            <div class="col-md-8">
+                <label>{{user_detail.username}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label>First Name </label>&nbsp;&nbsp;
+            </div>
+            <div class="col-md-8">
+                <label>{{user_detail.firstName}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label>Last Name </label>&nbsp;&nbsp;
+            </div>
+            <div class="col-md-8">
                 <label>{{user_detail.lastName}}</label>
-                <br />
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <div class="col-md-4">
-                <label id="head">user_id</label>
-                <label>{{user_detail.id}}</label><br />
+                <label>Project Name </label>&nbsp;
             </div>
-            <div class="col-md-4">
-                <label id="head">Username</label>
-                <label>{{user_detail.username}}</label><br/>
+            <div class="col-md-8">
+                <label>{{user_detail.project}}</label>
             </div>
         </div>
     </div>  
     <div class="row">
         <div class="col-md-12">
             <div class="col-md-4">
-                <label id="head">Email </label>
+                <label>Email </label>&nbsp;&nbsp;
+            </div>
+            <div class="col-md-8">
                 <label>{{user_detail.email}}</label>
-                <br />
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <div class="col-md-4">
-                <label id="head">Project</label>
-                <label>{{user_detail.project}}</label><br />
+                <label>Phone </label>&nbsp;&nbsp;
             </div>
-            <div class="col-md-4">
-                <label id="head">Phone Number</label>
-                <label>{{user_detail.phone}}</label><br/>
+            <div class="col-md-8">
+                <label>{{user_detail.phone}}</label>
             </div>
         </div>
-    </div>   
-</div>
-
-<div class="content" *ngFor="let index of value , let i=index">
-    <h3>Asset Details</h3>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <label id="head">Asset_Id</label>
-                <label id>{{value[i].asset_id}}</label><br />
+    </div>  
+ </div>
+ <div class="rightdiv">
+    <h2>Asset Details</h2>
+    <div class="content" *ngFor="let index of value , let i=index">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <label id="head">Asset_Id</label>
+                </div>
+                <div class="col-md-6">
+                    <label id>{{value[i].id}}</label>
+                </div>
             </div>
-            <div class="col-md-6">
-                <label id="head">Brand</label>
-                <label>{{value[i].make}}</label><br />
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <label id="head">Brand</label>
+                </div>
+                <div class="col-md-6">
+                    <label>{{value[i].make}}</label>
+                </div>
             </div>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <label id="head">Model Number</label>
+                </div>
+                <div class="col-md-6">
+                    <label>{{value[i].model_no}}</label>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <label id="head">Product Number</label>
+                </div>
+                <div class="col-md-6">
+                    <label>{{value[i].product_number}}</label>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <label id="head">Product Type</label>
+                </div>
+                <div class="col-md-6">
+                    <label>{{value[i].product_name}}</label>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div align="center">
+                    <button class="btn btn-primary" type="submit" id="article-update-button" (click)="onClick(value[i].id)">Map</button>
+                </div>
+            </div>
+                        
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <label id="head">Model Number</label>
-                <label>{{value[i].model_no}}</label><br />
-            </div>
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <label id="head">Asset_Id</label>
-                <label>{{value[i].product_number}}</label><br />
-            </div>
-            <div class="col-md-6">
-                <label id="head">Product Type</label>
-                <label>{{value[i].product_type.name}}</label><br />
-            </div>
-        </div>
-    </div>
-   
-</div>
-
