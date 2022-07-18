@@ -74,10 +74,21 @@
           <label for="model_no">Model Number</label>
           <input id="model_no" type="text" name="model_no" [ngModel]>
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
           <label for="date">Year</label>
           <input id="date" type="text" name="date" [ngModel]>
-        </div>
+        </div> -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="assetDate">Asset Date <span
+                  class="glyphicon glyphicon-calendar"></span></label>
+          <div class="col-md-8">
+              <input type="text" id="date" name="date" placeholder="YYYY-MM-DD"  class="form-control input-md"  [ngModel]>
+          </div>
+          <div class="col-md-4">
+            <label for="asset_number">Asset Number</label>
+            <input id="asset_number" type="text" name="asset_number" [ngModel]>
+          </div>
+      </div>
       </div><br/>
       <div class="row">
         <div class="col-md-12">
@@ -145,6 +156,7 @@
           <th>Serial Number</th>
           <th>Asset Number</th>
           <th>Notes</th>
+          <th>Asset Date</th>
           <th>Available</th>
           
           
@@ -162,6 +174,7 @@
           <td>{{ asset.laptop_number}}</td>
           <td>{{ asset.asset_number }}</td>
           <td>{{ asset.note}}</td>
+          <td>{{asset.asset_date}}</td>
           <td><span class="status text-danger">&bull;</span> {{asset.is_available}}</td>  
           
           

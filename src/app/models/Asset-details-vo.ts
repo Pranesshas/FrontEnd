@@ -12,7 +12,7 @@ export class AssetDetailsVo{
     ram: any;
     hdd:any;
     cd_rom:String;
-    date:any;
+    asset_date:any;
     laptop_number:String;
     product_id:number;
     is_active: boolean;

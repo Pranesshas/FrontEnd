@@ -58,11 +58,13 @@ assetTypes: any;
     assetDetails.cd_rom=formValue.cd_rom;
     assetDetails.os=formValue.os;
     assetDetails.model_no=formValue.model_no;
-    assetDetails.date=formValue.date;
+    assetDetails.asset_date=formValue.date;
     assetDetails.is_active=formValue.is_active;
     assetDetails.is_available=formValue.is_available;
     assetDetails.is_declared=formValue.is_declared;
     assetDetails.is_old=formValue.is_old;
+    debugger
+    assetDetails.asset_number=formValue.asset_number;
     assetDetails.product_type=form.value.product_type;
     console.log(form.value.product_type);
 
@@ -87,12 +89,15 @@ assetTypes: any;
     searchObject.cd_rom=formValue.cd_rom;
     searchObject.os=formValue.os;
     searchObject.model_no=formValue.model_no;
-    searchObject.date=formValue.date;
+    searchObject.asset_date=formValue.date;
     searchObject.is_active=formValue.is_active;
     searchObject.is_available=formValue.is_available;
     searchObject.is_declared=formValue.is_declared;
     searchObject.is_old=formValue.is_old;
     searchObject.product_type=form.value.product_type;
+    debugger
+    searchObject.asset_number=formValue.asset_number;
+
 
     // if (formValue.product_id == null) {
     //   searchObject.product_id = null;
