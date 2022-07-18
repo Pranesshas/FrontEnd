@@ -81,7 +81,7 @@ export class AssetTypeComponent implements OnInit {
     console.log(form.value.product_type);
     debugger
     if(form.value.assetDate!=null){
-     assetDetails.date=formValue.assetDate;
+     assetDetails.asset_date=formValue.assetDate;
       // assetDetails.date = this.datePipe.transform(formValue.date);
 
     }

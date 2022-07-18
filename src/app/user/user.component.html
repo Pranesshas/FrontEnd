@@ -113,12 +113,12 @@
                     <label id="head">Product Type</label>
                 </div>
                 <div class="col-md-6">
-                    <label>{{value[i].product_name}}</label>
+                    <label>{{value[i].product_type.name}}</label>
                 </div>
             </div>
             <div class="col-md-12">
                 <div align="center">
-                    <button class="btn btn-primary" type="submit" id="article-update-button" (click)="onClick(value[i].id)">Map</button>
+                    <button class="btn btn-primary" type="submit" id="article-update-button" (click)="onClick(value[i].id)" style="width:100px">View Details</button>
                 </div>
             </div>
                         

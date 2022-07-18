@@ -29,12 +29,16 @@ totalUsers:number;
     debugger
     this.router.navigate(["/user/"+id]);
   }
-
+  details:any;
   getDashboardDetails(){
     this.dashboardService.getDashboardDetails().subscribe((data)=>{
       debugger
       console.log(data);
-      this.userDetails=data;
+      this.details=data;
+      for(let i=0;i<this.details.length;i++){
+        this.details[i].created_date=this.details[i].created_date.replaceAll("T"," Time ");
+      }
+      this.userDetails=this.details;
     })
   }
 
