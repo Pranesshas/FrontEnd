@@ -1,0 +1,31 @@
+.content
+{
+    margin-top: 2em;
+    border: 1.5px solid blue;
+    height:auto;
+    font-size: 18px;
+    
+}
+/* .col-md-8
+{
+    height:500px;
+    width:90%;
+}
+.col-md-4
+{
+ 
+    height:500px;
+    width:30%;
+} */
+
+#head
+{
+    font-weight: bold;
+    padding: 8px;
+}
+label
+{
+    font-weight: unset;
+    padding:8px;
+}
+

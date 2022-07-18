@@ -1,0 +1,78 @@
+
+<div class="content" style="height:150px">
+    <h3>User Details</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label id="head">FullName</label>
+                <label>{{user_detail.firstName}}</label>&nbsp;&nbsp;
+                <label>{{user_detail.lastName}}</label>
+                <br />
+            </div>
+            <div class="col-md-4">
+                <label id="head">user_id</label>
+                <label>{{user_detail.id}}</label><br />
+            </div>
+            <div class="col-md-4">
+                <label id="head">Username</label>
+                <label>{{user_detail.username}}</label><br/>
+            </div>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label id="head">Email </label>
+                <label>{{user_detail.email}}</label>
+                <br />
+            </div>
+            <div class="col-md-4">
+                <label id="head">Project</label>
+                <label>{{user_detail.project}}</label><br />
+            </div>
+            <div class="col-md-4">
+                <label id="head">Phone Number</label>
+                <label>{{user_detail.phone}}</label><br/>
+            </div>
+        </div>
+    </div>   
+</div>
+
+<div class="content" *ngFor="let index of value , let i=index">
+    <h3>Asset Details</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <label id="head">Asset_Id</label>
+                <label id>{{value[i].asset_id}}</label><br />
+            </div>
+            <div class="col-md-6">
+                <label id="head">Brand</label>
+                <label>{{value[i].make}}</label><br />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <label id="head">Model Number</label>
+                <label>{{value[i].model_no}}</label><br />
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <label id="head">Asset_Id</label>
+                <label>{{value[i].product_number}}</label><br />
+            </div>
+            <div class="col-md-6">
+                <label id="head">Product Type</label>
+                <label>{{value[i].product_type.name}}</label><br />
+            </div>
+        </div>
+    </div>
+   
+</div>
+

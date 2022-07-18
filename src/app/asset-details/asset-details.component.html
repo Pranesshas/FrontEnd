@@ -1,0 +1,174 @@
+<div class="container-fluid">
+  <div class="asset">
+    <form (ngSubmit)="onSearch(f)" #f="ngForm">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="asset_no">Product Id</label>
+          <input type="text" name="product_id" [ngModel]>
+        </div>
+        <div class="col-md-4">
+          <label for="product_type">Product Type</label>
+          <select id="product_type" name="product_type" [ngModel]>
+            <option *ngFor="let asset of assetTypes"[value]="asset.id">{{asset.name}}</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="Brand">Brand</label>
+          <select id="brand" name="brand" [ngModel]>
+            <option>LENOVO</option>
+            <option>HP</option>
+          </select>
+        </div> 
+      </div><br/>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="processor">Processor</label>
+          <input id="processor" type="text" name="processor" [ngModel]>
+        </div>
+        <div class="col-md-4">
+          <label for="product_no">Product Number</label>
+          <input id="product_no" type="text" name="product_no" [ngModel]>
+        </div>
+        <div class="col-md-4">
+          <label for="laptop_no">Laptop Number</label>
+          <input id="laptop_no" type="text" name="laptop_no" [ngModel]>
+        </div>      
+      </div><br/>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="RAM">RAM</label>
+          <select id="ram" name="ram" [ngModel]>
+            <option>8GB</option>
+            <option>32Gb</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="HDD">HDD</label>
+          <select id="hdd" name="hdd" [ngModel]>
+            <option>250GB</option>
+            <option>256GB</option>
+            <option>320GB</option>
+            <option>500GB</option>
+            <option>750GB</option>
+            <option>512GB</option>
+            <option>1TB</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="cd_rom">CD ROM</label>
+          <select id="cd_rom" name="cd_rom" [ngModel]>
+            <option>DVD RW</option>
+          </select>
+        </div>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="os">OS</label>
+          <select id="os" name="os" [ngModel]>
+            <option>Windows 10 Professional</option>
+            <option>Windows 7 Ultimate</option>
+            <option>Windows 7 Enterprise</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="model_no">Model Number</label>
+          <input id="model_no" type="text" name="model_no" [ngModel]>
+        </div>
+        <div class="col-md-4">
+          <label for="date">Year</label>
+          <input id="date" type="text" name="date" [ngModel]>
+        </div>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox"  name="is_active" [ngModel]>
+              <label class="form-check-label" for="is_active">
+                is_active
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox"  name="is_available" [ngModel]>
+              <label class="form-check-label" for="is_available">
+                is_available
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-check">
+             <input class="form-check-input" type="checkbox" name="is_declared" [ngModel]>
+             <label class="form-check-label" for="is_declared">
+               is_declared
+             </label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="is_old" [ngModel]>
+              <label class="form-check-label" for="is_old">
+                is_old
+              </label>
+            </div>
+          </div> 
+        </div>
+      </div><br/><br/>
+    <div align="center">
+        <button name="submit" value="submit"><strong>Search</strong></button>
+        <button name="cancel" value="cancel" (click)="onCancel(f)"><strong>Cancel</strong></button>
+    </div>
+  </form>
+ </div>
+
+  <div class="table">
+    <table>
+      <thead>
+        <tr>
+          <!-- <th> Product Id</th>
+          <th>Product Type</th>
+          <th>Make</th>
+          <th>Processor</th>
+          <th>Product Number</th>
+          <th>Serial Number</th>
+          <th>RAM</th>
+          <th>HDD</th>
+          <th>CD_ROM</th>
+          <th>OS</th>
+          <th>Model</th> -->
+
+          <th> Product Id</th>
+          <th>Product Type</th>
+          <th>Make</th>
+          <th>Model</th>
+          <th>Serial Number</th>
+          <th>Asset Number</th>
+          <th>Notes</th>
+          <th>Available</th>
+          
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asset of totalAssets"
+          [ngStyle]="{'background-color': (asset.is_available) ?  '#49d615' : '#ff0000'}">
+          <td>{{ asset.product_id}}</td>
+          <th scope="row">{{ asset.product_name }}</th>
+          <td>
+            <a (click)="onClick(asset.product_id)">{{ asset.make }}</a>
+          </td>
+          <td>{{ asset.model_no}}</td>
+          <td>{{ asset.laptop_number}}</td>
+          <td>{{ asset.asset_number }}</td>
+          <td>{{ asset.note}}</td>
+          <td><span class="status text-danger">&bull;</span> {{asset.is_available}}</td>  
+          
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

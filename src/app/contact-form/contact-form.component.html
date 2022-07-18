@@ -1,0 +1,64 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <strong *ngIf="success"> Data has been submitted successfully !! </strong>
+  <!-- <strong *ngIf="!success"> Data has been submitted successfully !! </strong> -->
+
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="firstName" for="firstName" placeholder="Your name.."  [ngModel]>
+  
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lastName" placeholder="Your last name.."  [ngModel]>
+
+      <label for="lname">Email</label>
+      <input type="text" id="email" name="email" placeholder="Your Email.."  [ngModel]>
+
+      <label for="lname">Phone</label>
+      <input type="text" id="phone" name="phone" placeholder="Your Phone.."  [ngModel]>
+  
+      <label for="project">Project</label>
+      <!-- <input type="text" list="project" /> -->
+     <select id="project" name="project" [ngModel]> 
+      <option value="Medpoint">Medpoint</option>
+      <option value="Admin">Admin</option>
+
+     </select>
+  
+      <!-- <label for="subject">Subject</label>
+      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"  [ngModel]></textarea>
+   -->
+      <input type="submit" value="Submit">
+      
+      <h1>User table</h1>
+
+      <table id="customers">
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th> Project</th>
+          <th>Status</th>
+        </tr>
+        <tr *ngFor="let user of allUsers">
+          <!-- <td>{{user.firstName}}</td> -->
+          <td>
+            <a (click)="onClick(user.id)"> {{ user.firstName }}
+              
+            </a>
+
+        </td>
+          <td>{{user.email}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.project}}</td>
+          <td>{{user.active}}</td>
+        </tr>
+        
+      </table>
+      
+  
+    </form>
+    </div>
+  
+       
+        
+        
+       

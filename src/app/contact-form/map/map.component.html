@@ -1,0 +1,139 @@
+<!-- <button (click)="onClickDelete(laptop)"> delete </button> -->
+<div class="alert alert-danger alert-dismissible" *ngIf="isAlert" style="margin-top:2em;">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ alertMsg }}</strong>
+</div>
+<div class="alert alert-success alert-dismissible" *ngIf="success" style="margin-top:2em;">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ alertMsg }}</strong>
+</div>
+
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <label>Product Type :</label>&nbsp;&nbsp;&nbsp;
+            <label for="output">{{ laptop.product_type.name}} </label>
+        </div>
+        <div class="col-md-6">
+            <label>Brand :</label>&nbsp;&nbsp;&nbsp;
+            <label for="output">{{ laptop.make}}</label>
+        </div>
+    </div>&nbsp;&nbsp;
+    <div class="row" *ngIf="!!laptop.processor">
+        <div class="col-md-6" >
+            <label>Processor :</label>&nbsp;&nbsp;&nbsp;
+            <label for="output">{{ laptop.processor}}</label>
+        </div>
+        <div class="col-md-6">
+            <label>Product Number :</label>&nbsp;&nbsp;&nbsp;
+            <label for="output">{{ laptop.product_number}}</label>
+        </div>
+    </div>&nbsp;&nbsp;
+    <div class="row">
+        <div class="col-md-6">
+            <label>Laptop Number :</label>&nbsp;&nbsp;&nbsp;
+            <label for="output">{{ laptop.laptop_number}}</label>
+        </div>
+        <div class="col-md-6">
+            <label>RAM :</label>&nbsp;&nbsp;&nbsp;
+            <label for="output">{{ laptop.ram}}</label>
+        </div>
+    </div>&nbsp;&nbsp;
+    <div class="row">
+        <div class="col-md-6">
+            <label>HDD :</label>&nbsp;&nbsp;&nbsp;
+            <label for="output">{{ laptop.hdd}}</label>
+        </div>
+        <div class="col-md-6">
+            <label>CD_ROM :</label>&nbsp;&nbsp;&nbsp;
+            <label for="output">{{ laptop.cd_rom }}</label>
+        </div>
+    </div>&nbsp;&nbsp;
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>Old Asset :</label>&nbsp;&nbsp;&nbsp;
+            <label for="output">{{ laptop.old ? 'Yes':'No'}}</label>
+        </div>
+        <div class="col-md-6">
+            <label>Declaration Signed :</label>&nbsp;&nbsp;&nbsp;
+            <label for="output">{{ laptop._declared ? 'Yes':'No' }}</label>
+        </div>
+    </div>&nbsp;&nbsp;
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>Operating System :</label>&nbsp;&nbsp;
+            <label for="output">{{ laptop.os }}</label>
+        </div>
+        <div class="col-md-6">
+            <label>Model Number :</label>&nbsp;&nbsp;&nbsp;
+            <label for="output">{{ laptop.model_no }}</label>
+        </div>
+    </div>&nbsp;&nbsp;
+
+    <div class="row" *ngIf="display">
+        <div class="col-md-6">
+            <label>Assigned to Project :</label>&nbsp;&nbsp;
+            <label for="output">{{ user.project }}</label>
+        </div>
+        <div class="col-md-6">
+            <label>Assigned to User :</label>&nbsp;&nbsp;&nbsp;
+            <label for="output" (click)="onClickUser()">{{ user.firstName+' '+user.lastName }}</label>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="!display">
+        <div class="col-md-6">
+            <label>Assigned to Project :</label>&nbsp;&nbsp;&nbsp;
+            <select id="assets" name="assets" (change)="onChangeProject($event.target.value)" [ngModel]="project">
+                <option>Select Project</option>
+                <option *ngFor="let project of projects" [value]="project">{{project}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label>Assigned to User :</label>&nbsp;&nbsp;&nbsp;
+            <select id="name" name="name" (change)="onChangeName($event.target.value)" [disabled]="display">
+                <option>Select User</option>
+                <option *ngFor="let name of names" [value]="name.id" [disabled]="display">{{name.firstName+'
+                    '+name.lastName}}</option>
+                <!-- <option *ngIf="display" [value]="name" [disabled]="display" [ngModel]="name">{{name}}</option> -->
+            </select>
+        </div>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+</div>
+<div class=" row" *ngIf="showUser">
+    <label for="fname">First Name</label>
+    <label for="fname">{{ user.firstName}}</label>
+
+    <label for="lname">Last Name</label>
+    <label for="fname">{{ user.lastName}}</label>
+
+    <label for="lname">Email</label>
+    <label for="fname">{{ user.email}}</label>
+
+    <label for="lname">Phone</label>
+    <label for="fname">{{ user.phone}}</label>
+
+    <label for="project">Project</label>
+    <!-- <input type="text" list="project" /> -->
+    <label for="fname">{{ user.project}}</label>
+    
+</div>
+<div align="center" style="margin-top: 2.5em;">
+    <div align="center" *ngIf="!display" >
+        <button name="map" (click)="onSubmit()"><strong>Map</strong></button>&nbsp;&nbsp;&nbsp;
+        <button name="submit" (click)="onCancel()"><strong>Cancel</strong></button>&nbsp;&nbsp;&nbsp;
+        <button (click)="onClickDelete(laptop)"><strong>Delete</strong></button>
+    </div>
+    <div align="center" *ngIf="display">
+        <button name="delete" (click)="onClickDelete(laptop)"><strong>Delete</strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button name="reassign" (click)="onClickReassign(laptop)"><strong>Reassign</strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button name="unassign" (click)="onClickUnassign(laptop)"><Strong>Unassign</Strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button name="cancel" (click)="Cancel()"><strong>Cancel</strong></button>
+    </div>
+</div>
+
+
