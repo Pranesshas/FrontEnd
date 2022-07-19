@@ -1,9 +1,9 @@
 
-
 label
 {
     width:40%;
     padding:1px;
+    
 }
 
 input
@@ -43,10 +43,7 @@ button
     width:90px;
     border-radius: 2px;
 }
-mat-form-field
-{
-    width:15%;
-}
+
 
 .input-group-text
 {

@@ -31,6 +31,12 @@ export class AssetTypeComponent implements OnInit {
     this.show=false;
   }
  
+  onClear(form: NgForm)
+  { 
+    form.reset();
+    this.asset_type=0;
+  }
+
   getAssetTypes(){
     this.assetsService.getAssetTypes().subscribe((data)=>{
       debugger
@@ -41,14 +47,14 @@ export class AssetTypeComponent implements OnInit {
   
   onSubmit(){
     this.saveAssets();
-    this.show=false;
+    // this.show=false;
   }
 
-  onSearch(form:NgForm){
-
+  onSearch(form:NgForm)
+  {
   }
+
   saveAssets(){
-    debugger
     if(!!this.assetValue && this.assetValue!=""){
       this.assetsService.saveAssetType(this.assetValue).subscribe((data)=>{
         console.log(data);
@@ -59,7 +65,6 @@ export class AssetTypeComponent implements OnInit {
   }
 
   onSave(form: NgForm){  
-    debugger
     let formValue = form.value;
     let assetDetails :AssetDetailsVo = new AssetDetailsVo();
     assetDetails.asset_number=formValue.asset_number;
@@ -78,16 +83,16 @@ export class AssetTypeComponent implements OnInit {
     assetDetails.is_declared=formValue.is_declared;
     assetDetails.is_old=formValue.is_old;
     assetDetails.product_type=this.asset_type;
+    assetDetails.note=formValue.note;
+    assetDetails.asset_date=formValue.asset_date;
     console.log(form.value.product_type);
-    debugger
     if(form.value.assetDate!=null){
-     assetDetails.asset_date=formValue.assetDate;
+     assetDetails.asset_date=formValue.asset_date;
       // assetDetails.date = this.datePipe.transform(formValue.date);
-
     }
-
     console.log(assetDetails);
     this.saveAssetDetails(assetDetails);
+    form.reset();
   }
 
   saveAssetDetails(assetDetails){

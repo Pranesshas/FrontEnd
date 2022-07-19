@@ -28,7 +28,7 @@
             <option>Inspiron N5010 A10</option>
           </select>
         </div> 
-      </div><br/>
+      </div>
       <div class="row">
         <div class="col-md-4">
           <label for="processor">Processor</label>
@@ -42,7 +42,7 @@
           <label for="laptop_no">Laptop Number</label>
           <input id="laptop_no" type="text" name="laptop_no" [ngModel]>
         </div>      
-      </div><br/>
+      </div>
       <div class="row">
         <div class="col-md-4">
           <label for="RAM">RAM</label>
@@ -73,7 +73,7 @@
             <option>DVD RW</option>
           </select>
         </div>
-      </div><br/>
+      </div>
       <div class="row">
         <div class="col-md-4">
           <label for="os">OS</label>
@@ -90,17 +90,17 @@
           <label for="asset_number">Asset Number</label>
           <input id="asset_number" type="text" name="asset_number" [ngModel]>
         </div>
+      </div>
+      <div class="row">
+          <div class="col-md-4">
+            <label>Asset Date</label>
+            <input type="date" id="asset_date" name="asset_date" [ngModel]>  
+          </div>
+      </div>
         <!-- <div class="col-md-4">
           <label for="date">Year</label>
           <input id="date" type="text" name="date" [ngModel]>
-        </div> -->
-      </div>
-      <label style="width:10%">Asset Date</label>
-        <mat-form-field appearance="fill">
-          <input matInput [matDatepicker]="picker" name=" asset_date" placeholder="Select Date">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field> <br/><br/>
+        </div> -->      
       <div class="row">
         <div class="col-md-12">
           <div class="col-md-3">
@@ -183,9 +183,7 @@
           <td>{{ asset.asset_number }}</td>
           <td>{{ asset.note}}</td>
           <td>{{asset.asset_date}}</td>
-          <td><span class="status text-danger">&bull;</span> {{asset.is_available}}</td>  
-          
-          
+          <td><span class="status text-danger">&bull;</span> {{asset.is_available}}</td>            
         </tr>
       </tbody>
     </table>

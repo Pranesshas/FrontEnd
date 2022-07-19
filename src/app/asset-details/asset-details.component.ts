@@ -195,7 +195,6 @@ assetTypes: any;
    searchList(searchObject,startPosition)
    {
     this.assetsService.searchAssets(searchObject,startPosition).subscribe((data) => {
-      debugger
         console.log(data);
         this.totalAssets=data.assetList;
         console.log(data);
@@ -207,14 +206,10 @@ assetTypes: any;
     this.assetsService.saveAssets(assetDetails).subscribe((data)=>{
       console.log(data);
   });
-
-  
   }
 
   onCancel(form: NgForm)
-  {
-    
-    
+  { 
     form.reset();
   }
 
