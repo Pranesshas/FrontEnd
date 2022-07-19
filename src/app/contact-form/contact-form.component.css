@@ -18,10 +18,13 @@ input[type=text], select, textarea {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    height:35px;
+    width:90px;
   }
   
   /* When moving the mouse over the submit button, add a darker green color */
   input[type=submit]:hover {
+    
     background-color: #45a049;
   }
   
@@ -53,3 +56,13 @@ input[type=text], select, textarea {
     background-color: #04AA6D;
     color: white;
   }
+  button
+{
+  width:90px;
+  height:35px;
+}
+
+input[type=text],select
+{
+  height:40px;
+}

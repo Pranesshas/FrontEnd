@@ -3,6 +3,7 @@
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ alertMsg }}</strong>
 </div>
+
 <div class="alert alert-success alert-dismissible" *ngIf="success" style="margin-top:2em;">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>{{ alertMsg }}</strong>
@@ -10,7 +11,7 @@
 
 
 <div class="content">
-    <div class="row">
+    <div class="col-md-12">
         <div class="col-md-6">
             <label>Product Type :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.product_type.name}} </label>
@@ -19,8 +20,8 @@
             <label>Brand :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.make}}</label>
         </div>
-    </div>&nbsp;&nbsp;
-    <div class="row" *ngIf="!!laptop.processor">
+    </div>
+    <div class="col-md-12" *ngIf="!!laptop.processor">
         <div class="col-md-6" >
             <label>Processor :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.processor}}</label>
@@ -29,8 +30,8 @@
             <label>Product Number :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.product_number}}</label>
         </div>
-    </div>&nbsp;&nbsp;
-    <div class="row">
+    </div>
+    <div class="col-md-12">
         <div class="col-md-6">
             <label>Laptop Number :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.laptop_number}}</label>
@@ -39,8 +40,8 @@
             <label>RAM :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.ram}}</label>
         </div>
-    </div>&nbsp;&nbsp;
-    <div class="row">
+    </div>
+    <div class="col-md-12">
         <div class="col-md-6">
             <label>HDD :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.hdd}}</label>
@@ -49,9 +50,9 @@
             <label>CD_ROM :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.cd_rom }}</label>
         </div>
-    </div>&nbsp;&nbsp;
+    </div>
 
-    <div class="row">
+    <div class="col-md-12">
         <div class="col-md-6">
             <label>Old Asset :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.old ? 'Yes':'No'}}</label>
@@ -60,9 +61,9 @@
             <label>Declaration Signed :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop._declared ? 'Yes':'No' }}</label>
         </div>
-    </div>&nbsp;&nbsp;
+    </div>
 
-    <div class="row">
+    <div class="col-md-12">
         <div class="col-md-6">
             <label>Operating System :</label>&nbsp;&nbsp;
             <label for="output">{{ laptop.os }}</label>
@@ -71,9 +72,9 @@
             <label>Model Number :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.model_no }}</label>
         </div>
-    </div>&nbsp;&nbsp;
+    </div>
 
-    <div class="row" *ngIf="display">
+    <div class="col-md-12" *ngIf="display">
         <div class="col-md-6">
             <label>Assigned to Project :</label>&nbsp;&nbsp;
             <label for="output">{{ user.project }}</label>
@@ -84,7 +85,7 @@
         </div>
     </div>
 
-    <div class="row" *ngIf="!display">
+    <div class="col-md-12" *ngIf="!display">
         <div class="col-md-6">
             <label>Assigned to Project :</label>&nbsp;&nbsp;&nbsp;
             <select id="assets" name="assets" (change)="onChangeProject($event.target.value)" [ngModel]="project">
@@ -101,7 +102,7 @@
                 <!-- <option *ngIf="display" [value]="name" [disabled]="display" [ngModel]="name">{{name}}</option> -->
             </select>
         </div>
-    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
     
 </div>
 <div class=" row" *ngIf="showUser">

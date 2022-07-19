@@ -14,21 +14,26 @@ export class ContactFormComponent implements OnInit {
   userSaved : any;
   allUsers: any;
   success:boolean;
+  isShow:boolean=false;
+  value:any;
+
   constructor(private router: Router,
-    private userService: UserService) {
-    
+    private userService: UserService) {   
    }
 
   ngOnInit(): void {
     this.getAllUsers();
+  }
+  onShow()
+  {
+    this.isShow=true;
   }
 
   onSubmit(form: NgForm){
     
     let formValue = form.value;
     debugger
-    let userDetails :UserDetailsVo = new UserDetailsVo();
-    
+    let userDetails :UserDetailsVo = new UserDetailsVo();  
     userDetails.firstName=formValue.firstName;
     userDetails.lastName=formValue.lastName;
     userDetails.subject=formValue.subject;
@@ -47,12 +52,11 @@ export class ContactFormComponent implements OnInit {
           this.success=false;
         }
         this.ngOnInit();
-
+    this.isShow=false;
   });
+  }
 
  
-  }
-  value:any;
   onClick(id){
     debugger
 this.value=id;
@@ -61,15 +65,12 @@ this.router.navigate(["/"+id]);
   }
 
   getAllUsers(){
-
     this.userService.getUsers().subscribe((data) =>{
       debugger
       this.allUsers=data;
-
       for(let i=0;i<this.allUsers.length;i++){
         this.allUsers[i].firstName= this.allUsers[i].firstName + " "+ this.allUsers[i].lastName;
       }
-
   });
 }
 }

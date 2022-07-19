@@ -1,64 +1,103 @@
 <div class="container">
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-  <strong *ngIf="success"> Data has been submitted successfully !! </strong>
-  <!-- <strong *ngIf="!success"> Data has been submitted successfully !! </strong> -->
-
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="isShow">
       <label for="fname">First Name</label>
-      <input type="text" id="fname" name="firstName" for="firstName" placeholder="Your name.."  [ngModel]>
-  
+      <input type="text" id="fname" name="firstName" for="firstName" placeholder="Your name.."  [ngModel]>  
       <label for="lname">Last Name</label>
       <input type="text" id="lname" name="lastName" placeholder="Your last name.."  [ngModel]>
-
       <label for="lname">Email</label>
       <input type="text" id="email" name="email" placeholder="Your Email.."  [ngModel]>
-
       <label for="lname">Phone</label>
-      <input type="text" id="phone" name="phone" placeholder="Your Phone.."  [ngModel]>
-  
+      <input type="text" id="phone" name="phone" placeholder="Your Phone.."  [ngModel]> 
       <label for="project">Project</label>
-      <!-- <input type="text" list="project" /> -->
      <select id="project" name="project" [ngModel]> 
       <option value="Medpoint">Medpoint</option>
       <option value="Admin">Admin</option>
-
-     </select>
-  
-      <!-- <label for="subject">Subject</label>
-      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"  [ngModel]></textarea>
-   -->
-      <input type="submit" value="Submit">
-      
-      <h1>User table</h1>
-
-      <table id="customers">
-        <tr>
-          <th>Full Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th> Project</th>
-          <th>Status</th>
-        </tr>
-        <tr *ngFor="let user of allUsers">
-          <!-- <td>{{user.firstName}}</td> -->
-          <td>
-            <a (click)="onClick(user.id)"> {{ user.firstName }}
-              
-            </a>
-
-        </td>
-          <td>{{user.email}}</td>
-          <td>{{user.phone}}</td>
-          <td>{{user.project}}</td>
-          <td>{{user.active}}</td>
-        </tr>
-        
-      </table>
-      
-  
+     </select><br/>  
+      <button class="btn btn-primary"  id="article-update-button" value="submit" (click)="onSubmit(f)">Submit</button>&nbsp;&nbsp;
+      <button class="btn btn-primary"  id="article-update-button">Cancel</button><br/><br/>
     </form>
-    </div>
-  
-       
-        
-        
-       
+
+    
+      <!-- <form class="well form-horizontal" #f="ngForm" *ngIf="isShow">
+        <fieldset>
+          <legend>
+            <h2><b>Add New Employee</b></h2>
+          </legend><br>
+          <div class="form-group">
+            <label class="col-md-4 control-label">First Name</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <input name="firstName" placeholder="First Name" class="form-control" type="text" [ngModel]>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Last Name</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <input name="lastName" placeholder="Last Name" class="form-control" type="text" [ngModel]>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Project</label>
+            <div class="col-md-4 selectContainer">
+              <div class="input-group">
+                <select name="project" class="form-control selectpicker" [ngModel]>
+                  <option value="medpoint">Medpoint</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">E-Mail</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <input name="email" placeholder="E-Mail Address" class="form-control" type="text" [ngModel]>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Phone</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <input name="phone"  class="form-control" type="text" [ngModel]>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4"><br>
+              <button class="btn btn-primary" id="article-update-button" value="submit" (click)="onSubmit(f)">Submit</button>&nbsp;&nbsp;
+              <button class="btn btn-primary" id="article-update-button">Cancel</button>
+            </div>
+          </div>
+        </fieldset>
+      </form> -->
+   
+  <button class="btn btn-primary" id="article-update-button" (click)="onShow()" *ngIf="!isShow">Add New</button>
+
+  <h1>User table</h1>
+  <table id="customers">
+    <tr>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th> Project</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let user of allUsers">
+      <!-- <td>{{user.firstName}}</td> -->
+      <td>
+        <a (click)="onClick(user.id)"> {{ user.firstName }}</a>
+      </td>
+      <td>{{user.email}}</td>
+      <td>{{user.phone}}</td>
+      <td>{{user.project}}</td>
+      <td>{{user.active}}</td>
+    </tr>
+  </table>
+</div>
+
+
