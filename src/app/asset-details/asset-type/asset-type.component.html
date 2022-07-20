@@ -3,6 +3,8 @@
   <div class="col-md-12">
       <label for="assetType">Enter asset Type
         <input type="text" id="assetType" name="assetType" [(ngModel)]="assetValue"/></label><br/>
+        <label class="form-check-label" for="is_confi"></label>
+        <input class="form-check-input" type="checkbox" name="is_confi" [(ngModel)]="is_confi">
   </div>
   <div class="row">
     <div class="col-md-12">
@@ -12,6 +14,15 @@
   </div> 
 </div>
 
+<div class="alert alert-danger alert-dismissible" *ngIf="isError" style="margin-top:2em;">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>{{ alertMsg }}</strong>
+</div>
+
+<div class="alert alert-success alert-dismissible" *ngIf="success" style="margin-top:2em;">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>{{ alertMsg }}</strong>
+</div>
 
 <div class="row" *ngIf="!show">
   <button name="add_asset" (click)="onClick()">Add Asset</button>
@@ -82,13 +93,13 @@
         <label>Asset Date</label>
         <input type="date" id="asset_date" name="asset_date" [ngModel]>   
       </div>
-      <div class="col-md-4" *ngIf="asset_type==1">
+      <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
         <label for="product_no" >Product Number</label>
         <input id="product_no" type="text" name="product_no" [ngModel]>
       </div>            
     </div>
     <div class="col-md-12">   
-      <div class="col-md-4" *ngIf="asset_type==1">
+      <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
         <label for="RAM">RAM</label>
         <select id="ram" name="ram" [ngModel]>
           <option>32 Gb</option>
@@ -98,7 +109,7 @@
             <option>4 Gb</option>
         </select>
       </div>   
-      <div class="col-md-4" *ngIf="asset_type==1">
+      <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
         <label for="HDD">HDD</label>
         <select id="hdd" name="hdd" [ngModel]>
           <option>1 TB</option>
@@ -111,20 +122,20 @@
             <option>256 SSD</option>
         </select>
       </div>
-      <div class="col-md-4" *ngIf="asset_type==1">
+      <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
         <label for="processor">Processor</label>
         <input id="processor" type="text" name="processor" [ngModel]>
       </div>   
     </div>
     <div class="col-md-12">   
-      <div class="col-md-4" *ngIf="asset_type==1">
+      <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
         <label for="os">OS</label>
         <select id="os" name="os" [ngModel]>
           <option>Windows 10 Professional</option>
           <option>Win-10 Enterprise</option>
         </select>
       </div>   
-      <div class="col-md-4" *ngIf="asset_type==1">
+      <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
         <label for="cd_rom">CD ROM</label>
         <select id="cd_rom" name="cd_rom" [ngModel]>
           <option>DVD RW</option>
@@ -137,11 +148,27 @@
         <textarea name="note" id="note" [ngModel]></textarea>
       </div>
     </div>
+    <div class="col-md-4">
+      <label for="asset_value">Asset Value</label>
+      <input id="asset_value" type="text" name="asset_value" [ngModel]>
+    </div> 
+    
+    <div class="text-center">
+      <input class="form-control" type="file"
+          (change)="onChange($event)">
+    
+      <button (click)="onUpload()"
+        class="btn btn-success">
+        Upload
+      </button>
+    </div>
+    
     <div class="row" align="center">
       <div class="col-md-12">
         <button type="submit" style="size:100px" (click)="onSave(f)"><strong>Save</strong></button>&nbsp;&nbsp;
         <button style="size:100px" (click)="onClear(f)"><strong>Cancel</strong></button>
       </div>
     </div><br/>    
-  </div>   
+  </div> 
+    
 </form>

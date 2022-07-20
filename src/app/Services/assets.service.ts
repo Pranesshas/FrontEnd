@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { AssetDetailsVo } from '../models/Asset-details-vo';
+import { AssetTypeVo } from '../models/Asset-type-vo';
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +26,13 @@ export class AssetsService {
 
   }
 
-  saveAssets(assetDetails:AssetDetailsVo):Observable<any>{
-    return this.http.post(`${this.baseUrl}` +"addAssets",assetDetails);
+  saveAssets(formData: FormData):Observable<any>{
+    return this.http.post(`${this.baseUrl}` +"addAssets",formData);
 
 
   }
+
+ 
   deleteAssets(asset_id:number):Observable<any>{
     return this.http.delete(`${this.baseUrl}` +"delete/"+ asset_id);
 
@@ -45,9 +48,9 @@ export class AssetsService {
   }
 
   
-  saveAssetType(assetType:String):Observable<any>
+  saveAssetType(assetType :AssetTypeVo):Observable<any>
   {
-    return this.http.post(`${this.baseUrl}`+"saveAssetType/"+assetType,assetType);
+    return this.http.post(`${this.baseUrl}`+"saveAssetType",assetType);
   }
   getUsersPerProject(project:String): Observable<any>{
     

@@ -20,8 +20,9 @@ export class AssetDetailsVo{
     is_declared:boolean;
     is_old:boolean;
     product_type:number;
-    notes:String;
+    note:String;
     asset_number:any;
+    asset_value:number;
     
     
     

@@ -2,6 +2,8 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AssetDetailsVo } from 'src/app/models/Asset-details-vo';
+import { AssetTypeVo } from 'src/app/models/Asset-type-vo';
+
 import { AssetsService } from 'src/app/Services/assets.service';
 
 @Component({
@@ -14,11 +16,19 @@ export class AssetTypeComponent implements OnInit {
   assetValue : String="";
   assetTypes : [{}];
   asset_type : number;
+
+  file: File = null;
+  loading: boolean = false; 
+  success : boolean = false;
+  alertMsg : String;
+  isError: boolean = false;
+  is_confi: boolean = false;
   constructor(private assetsService:AssetsService,
     ) { }
 
   ngOnInit(): void {
     this.getAssetTypes();
+    console.log(this.asset_type);
   }
   
   onClick()
@@ -55,8 +65,13 @@ export class AssetTypeComponent implements OnInit {
   }
 
   saveAssets(){
-    if(!!this.assetValue && this.assetValue!=""){
-      this.assetsService.saveAssetType(this.assetValue).subscribe((data)=>{
+    console.log(this.is_confi);
+    let assetType :AssetTypeVo = new AssetTypeVo();
+    debugger
+    assetType.asset_name=this.assetValue;
+    assetType.is_confi=this.is_confi;
+    if(!!assetType.asset_name && assetType.asset_name!=""){
+      this.assetsService.saveAssetType(assetType).subscribe((data)=>{
         console.log(data);
         this.ngOnInit();
       });
@@ -66,6 +81,7 @@ export class AssetTypeComponent implements OnInit {
 
   onSave(form: NgForm){  
     let formValue = form.value;
+    debugger  
     let assetDetails :AssetDetailsVo = new AssetDetailsVo();
     assetDetails.asset_number=formValue.asset_number;
     assetDetails.product_name=formValue.product;
@@ -90,16 +106,53 @@ export class AssetTypeComponent implements OnInit {
      assetDetails.asset_date=formValue.asset_date;
       // assetDetails.date = this.datePipe.transform(formValue.date);
     }
+    assetDetails.asset_value=formValue.asset_value;
+    
     console.log(assetDetails);
     this.saveAssetDetails(assetDetails);
     form.reset();
   }
 
   saveAssetDetails(assetDetails){
-    this.assetsService.saveAssets(assetDetails).subscribe((data)=>{
+    const formData = new FormData();
+    debugger
+    if(this.file != undefined){
+      // Set image name
+      const fileName = "PURCHASE"+".xlsx" ;
+      // Get blob image from base64string
+     
+
+
+      
+      // this.client = form.value;
+      formData.append('assetDetails', JSON.stringify(assetDetails));
+      formData.append('file',this.file, this.file.name);
+    }else{
+      formData.append('assetDetails', JSON.stringify(assetDetails));
+      formData.append('file', null);
+    }
+    console.log(formData);
+    
+    this.assetsService.saveAssets(formData).subscribe((data)=>{
       console.log(data);
+      debugger
+      if(data !== undefined && data !== null &&  data.operationStatus === "SUCCESS"){
+        
+        this.alertMsg=data.operationMessage;
+        this.success=true;
+
+      } else {
+        this.isError=true;
+        this.alertMsg=data.operationMessage;
+      }
       
   });
 }
+
+onChange(event) {
+  this.file = event.target.files[0];
+}
+
+
 }
 
