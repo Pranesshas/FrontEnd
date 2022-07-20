@@ -2,8 +2,7 @@
 label
 {
     width:40%;
-    padding:1px;
-    
+    padding:1px;   
 }
 
 input
@@ -24,7 +23,7 @@ button
 select
 {
     width:12.5em;
-    height:30px;
+    height:35px;
 }
 
 .col-md-12
@@ -32,18 +31,19 @@ select
     margin-top:1em;
     padding:2px;
 }
+
 .row
 {
-    margin-top: 1em;
-    
-}
-button
-{
-    height:35px;
-    width:90px;
-    border-radius: 2px;
+    margin-top: 1em;   
 }
 
+button
+{
+  width:80px;
+  height:35px;
+  border-radius: 4px;
+  padding:1px;
+}
 
 .input-group-text
 {
@@ -55,3 +55,9 @@ button
     font-size: medium;
 }
 
+form{
+    background-color: whitesmoke;
+    border:1px solid grey;
+    margin-top:2em;
+    border-radius: 2.5px;
+}

@@ -1,18 +1,23 @@
-<div class="row" *ngIf="show" >
-  <h2> Add new Asset Type</h2>
-  <div class="col-md-12">
-      <label for="assetType">Enter asset Type
-        <input type="text" id="assetType" name="assetType" [(ngModel)]="assetValue"/></label><br/>
-        <label class="form-check-label" for="is_confi"></label>
+<div class="container">
+  <div class="row" *ngIf="show">
+    <h2> Add New Asset Type</h2>
+    <div class="col-md-12" >
+      <div class="col-md-4">
+        <label for="assetType">Enter asset Type</label>
+          <input type="text" id="assetType" name="assetType" [(ngModel)]="assetValue" />
+      </div>
+      <div class="col-md-2">
+        <label  for="is_confi" style="width:30%">Is_Config</label>
         <input class="form-check-input" type="checkbox" name="is_confi" [(ngModel)]="is_confi">
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <button type="submit" (click)="onSubmit()">Submit</button>&nbsp;&nbsp;  
-      <button type="cancel" (click)="onCancel()">Cancel</button>
+      </div>
     </div>
-  </div> 
+      <div class="col-md-12" align="center">
+        <button class="btn btn-primary" id="article-update-button" type="submit" (click)="onSubmit()">Submit</button>&nbsp;&nbsp;
+        <button class="btn btn-primary" id="article-update-button"  type="cancel" (click)="onCancel()">Cancel</button>
+      </div>
+  </div>
 </div>
+
 
 <div class="alert alert-danger alert-dismissible" *ngIf="isError" style="margin-top:2em;">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -25,7 +30,7 @@
 </div>
 
 <div class="row" *ngIf="!show">
-  <button name="add_asset" (click)="onClick()">Add Asset</button>
+  <button class="btn btn-primary" id="article-update-button" name="add_asset" (click)="onClick()" style="width:100px;">Add Asset</button>
 </div>
 
 <!-- <h2>Existing Assets</h2><br/>
@@ -40,11 +45,11 @@
         <span class="input-group-text" id="addon-wrapping">Product Type</span>
       </div>
     </div>
-    <div class="col-md-4"style="width:140%;">
-      <select class="form-control"  [(ngModel)]="asset_type">
+    <div class="col-md-4" style="width:140%;">
+      <select class="form-control" [(ngModel)]="asset_type">
         <option *ngFor="let asset of assetTypes" [value]="asset.id">{{asset.name}}</option>
-    </select>
-    </div>                
+      </select>
+    </div>
   </div>
 </div>
 
@@ -57,118 +62,121 @@
 </div><br/><br/> -->
 
 <form (ngSubmit)="onSave(f)" #f="ngForm" *ngIf="asset_type">
-  <div style="border:1px solid grey;margin-top:2em;">
+  <div>
     <div class="col-md-12">
-        <div class="col-md-4">
-            <label for="asset_number">Asset Number</label>
-            <input id="asset_number" type="text" name="asset_number" [ngModel]>             
-        </div> 
+      <div class="col-md-4">
+        <label for="asset_number">Asset Number</label>
+        <input id="asset_number" type="text" name="asset_number" [ngModel]>
+      </div>
       <div class="col-md-4">
         <label for="Brand">Brand</label>
         <select id="brand" name="brand" [ngModel]>
           <option>LENOVO</option>
-            <option>Lenovo ThinkBook</option>
-            <option>Lenovo V15 G2 ITL</option>
-            <option>Lenovo</option>
-            <option>Dell</option>
-            <option>HP</option>
-            <option>LENOVO</option>
-            <option>HP 240 G8</option>
-            <option>HP 240 G7</option>
-            <option>HP Pavilion</option>
-            <option>Inspiron N5010 A10</option>
+          <option>Lenovo ThinkBook</option>
+          <option>Lenovo V15 G2 ITL</option>
+          <option>Lenovo</option>
+          <option>Dell</option>
+          <option>HP</option>
+          <option>LENOVO</option>
+          <option>HP 240 G8</option>
+          <option>HP 240 G7</option>
+          <option>HP Pavilion</option>
+          <option>Inspiron N5010 A10</option>
         </select>
       </div>
       <div class="col-md-4">
         <label for="laptop_no">Serial Number</label>
         <input id="laptop_no" type="text" name="laptop_no" [ngModel]>
-      </div>   
+      </div>
     </div>
-    <div class="col-md-12" >      
+    <div class="col-md-12">
       <div class="col-md-4">
         <label for="model_no">Model Number</label>
         <input id="model_no" type="text" name="model_no" [ngModel]>
       </div>
       <div class="col-md-4">
         <label>Asset Date</label>
-        <input type="date" id="asset_date" name="asset_date" [ngModel]>   
+        <input type="date" id="asset_date" name="asset_date" [ngModel]>
       </div>
       <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
-        <label for="product_no" >Product Number</label>
+        <label for="product_no">Product Number</label>
         <input id="product_no" type="text" name="product_no" [ngModel]>
-      </div>            
+      </div>
     </div>
-    <div class="col-md-12">   
+    <div class="col-md-12">
       <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
         <label for="RAM">RAM</label>
         <select id="ram" name="ram" [ngModel]>
           <option>32 Gb</option>
-            <option>16 GB</option>
-            <option>8 GB</option>
-            <option>4 GB</option>
-            <option>4 Gb</option>
+          <option>16 GB</option>
+          <option>8 GB</option>
+          <option>4 GB</option>
+          <option>4 Gb</option>
         </select>
-      </div>   
+      </div>
       <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
         <label for="HDD">HDD</label>
         <select id="hdd" name="hdd" [ngModel]>
           <option>1 TB</option>
-            <option>750 GB</option>
-            <option>512 GB</option>
-            <option>512 GB SSD</option>
-            <option>500 GB</option>
-            <option>320 GB</option>
-            <option>250 GB</option>
-            <option>256 SSD</option>
+          <option>750 GB</option>
+          <option>512 GB</option>
+          <option>512 GB SSD</option>
+          <option>500 GB</option>
+          <option>320 GB</option>
+          <option>250 GB</option>
+          <option>256 SSD</option>
         </select>
       </div>
       <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
         <label for="processor">Processor</label>
         <input id="processor" type="text" name="processor" [ngModel]>
-      </div>   
+      </div>
     </div>
-    <div class="col-md-12">   
+    <div class="col-md-12">
       <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
         <label for="os">OS</label>
         <select id="os" name="os" [ngModel]>
           <option>Windows 10 Professional</option>
           <option>Win-10 Enterprise</option>
         </select>
-      </div>   
+      </div>
       <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
         <label for="cd_rom">CD ROM</label>
         <select id="cd_rom" name="cd_rom" [ngModel]>
           <option>DVD RW</option>
         </select>
-      </div>         
-    </div>   
+      </div>
+    </div>
     <div class="col-md-12">
       <div class="col-md-4">
         <label>Notes</label>
         <textarea name="note" id="note" [ngModel]></textarea>
       </div>
+      <div class="col-md-4">
+        <label for="asset_value">Asset Value</label>
+        <span>&#8377;</span>&nbsp;
+        <input id="asset_value" type="text" name="asset_value" [ngModel]>
+      </div>
+      <div class="col-md-4">
+        <div class="col-xs-2">
+          <span style="align-items:center;"><strong>Invoice</strong></span>
+        </div>
+        <div class="col-md-3">
+          <input class="form-control" type="file" (change)="onChange($event)" style="height:35px;">
+        </div>   
+      </div>    
     </div>
-    <div class="col-md-4">
-      <label for="asset_value">Asset Value</label>
-      <input id="asset_value" type="text" name="asset_value" [ngModel]>
-    </div> 
-    
-    <div class="text-center">
-      <input class="form-control" type="file"
-          (change)="onChange($event)">
-    
-      <button (click)="onUpload()"
-        class="btn btn-success">
-        Upload
-      </button>
-    </div>
-    
+
     <div class="row" align="center">
       <div class="col-md-12">
-        <button type="submit" style="size:100px" (click)="onSave(f)"><strong>Save</strong></button>&nbsp;&nbsp;
-        <button style="size:100px" (click)="onClear(f)"><strong>Cancel</strong></button>
+        <button class="btn btn-primary" id="article-update-button" type="submit" style="size:100px" (click)="onSave(f)">Save</button>&nbsp;&nbsp;
+        <button class="btn btn-primary" id="article-update-button"  (click)="onClear(f)">Cancel</button>
       </div>
-    </div><br/>    
-  </div> 
-    
+    </div><br />
+  </div>
+
 </form>
+<!-- <button (click)="onUpload()"
+        class="btn btn-success">
+        Upload
+      </button> -->
