@@ -4,7 +4,7 @@
     <div class="col-md-12" >
       <div class="col-md-4">
         <label for="assetType">Enter asset Type</label>
-          <input type="text" id="assetType" name="assetType" [(ngModel)]="assetValue" />
+          <input type="text" id="assetType"  [(ngModel)]="assetValue"/>
       </div>
       <div class="col-md-2">
         <label  for="is_confi" style="width:30%">Is_Config</label>
@@ -104,7 +104,7 @@
       </div>
     </div>
     <div class="col-md-12">
-      <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
+      <div class="col-md-4" *ngIf="checkAsset()._configuration">
         <label for="RAM">RAM</label>
         <select id="ram" name="ram" [ngModel]>
           <option>32 Gb</option>
@@ -114,7 +114,7 @@
           <option>4 Gb</option>
         </select>
       </div>
-      <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
+      <div class="col-md-4" *ngIf="checkAsset()._configuration">
         <label for="HDD">HDD</label>
         <select id="hdd" name="hdd" [ngModel]>
           <option>1 TB</option>
@@ -127,20 +127,20 @@
           <option>256 SSD</option>
         </select>
       </div>
-      <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
+      <div class="col-md-4" *ngIf="checkAsset()._configuration">
         <label for="processor">Processor</label>
         <input id="processor" type="text" name="processor" [ngModel]>
       </div>
     </div>
     <div class="col-md-12">
-      <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
+      <div class="col-md-4" *ngIf="checkAsset()._configuration">
         <label for="os">OS</label>
         <select id="os" name="os" [ngModel]>
           <option>Windows 10 Professional</option>
           <option>Win-10 Enterprise</option>
         </select>
       </div>
-      <div class="col-md-4" *ngIf="assetTypes[asset_type]._configuration">
+      <div class="col-md-4" *ngIf="checkAsset()._configuration">
         <label for="cd_rom">CD ROM</label>
         <select id="cd_rom" name="cd_rom" [ngModel]>
           <option>DVD RW</option>
