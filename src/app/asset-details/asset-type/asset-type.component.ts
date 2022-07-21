@@ -14,7 +14,7 @@ import { AssetsService } from 'src/app/Services/assets.service';
 export class AssetTypeComponent implements OnInit {
   show:boolean=false;
   assetValue : String="";
-  assetTypes : [{}];
+  assetTypes : AssetTypeVo[] = [];
   asset_type : number;
 
   file: File = null;
@@ -50,6 +50,7 @@ export class AssetTypeComponent implements OnInit {
   getAssetTypes(){
     this.assetsService.getAssetTypes().subscribe((data)=>{
       debugger
+      
       this.assetTypes= data;
       console.log(this.assetTypes);
     })
@@ -77,6 +78,11 @@ export class AssetTypeComponent implements OnInit {
       });
       
     }
+  }
+
+  checkAsset():AssetTypeVo{
+   
+    return this.assetTypes.find(asset=>asset.id==this.asset_type)
   }
 
   onSave(form: NgForm){  
