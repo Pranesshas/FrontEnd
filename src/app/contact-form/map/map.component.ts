@@ -17,7 +17,7 @@ export class MapComponent implements OnInit {
   projectName: any;
   selectedId: number;
   display: boolean ;
-  names: any;
+  names:any;
   user_id: number;
   id: number;
   laptop: any;
@@ -38,7 +38,8 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
     this.display=false; 
-    this.getProjects();
+    // this.getProjects();
+    this.getUserDetails();
     this.route.params.subscribe(
       (params: Params) => {
         this.selectedId = +params['assetId'];
@@ -52,22 +53,24 @@ export class MapComponent implements OnInit {
     })
   }
 
-  onChangeProject(value: String) {
-    this.projectName = value;
-    this.userService.getUsersPerProject(this.projectName).subscribe((data) => {
+  getUserDetails() {
+    // this.projectName = value;
+    this.userService.getUsersPerProject().subscribe((data) => {
       console.log(data);
       this.names = data;
     })
   }
 
   onChangeName(id: number) {
+    
     this.user_id = id;
+    
   }
 
   getAssetsDetails() {
 
     this.assetsService.getAssetsDetails(this.selectedId).subscribe((data) => {
-      debugger
+      
       console.log(data);
       this.laptop = data.product;
       if (!this.laptop._available) {
@@ -82,9 +85,10 @@ export class MapComponent implements OnInit {
   onSubmit() {
     let mapDetails: MapDetailsVo = new MapDetailsVo();
     // let MapDetailsVo :mapDetails = new MapDetailsVo();
+    
     mapDetails.asset_id = this.laptop.id;
     mapDetails.user_id = this.user_id;
-    mapDetails.asset_type = this.laptop.product_name;
+    mapDetails.asset_type = this.laptop.product_type.id;
     this.mapService.saveMap(mapDetails).subscribe((data) => {
       // this.userService.getUsers().subscribe(( data ) =>{    
       if (data !== undefined && data !== null && data.operationStatus === "SUCCESS") {
@@ -104,7 +108,7 @@ export class MapComponent implements OnInit {
     mapDetails.asset_id = this.laptop.id;
     mapDetails.user_id = this.user.id;
     mapDetails.asset_type = this.laptop.product_name;
-    debugger
+    
     this.mapService.unAssignMap(mapDetails).subscribe((data) => {
       // this.userService.getUsers().subscribe(( data ) =>{      
       if (data !== undefined && data !== null && data.operationStatus === "SUCCESS") {

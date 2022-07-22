@@ -23,9 +23,9 @@ export class UserService {
     return this.http.get(`${this.baseUrl}`+"allUsers");
   }
 
-  getUsersPerProject(project:String): Observable<any>{
+  getUsersPerProject(): Observable<any>{
     
-    return this.http.get(`${this.baseUrl}`+project);
+    return this.http.get(`${this.baseUrl}`+"getUserDetails");
   }
 
   getDashboardDetails():Observable<any>{
