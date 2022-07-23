@@ -4,6 +4,7 @@ import { AssetsService } from 'src/app/Services/assets.service';
 import { UserService } from 'src/app/Services/user.service';
 import { MapDetailsVo } from '../../models/Map-details-vo';
 import { MapService } from 'src/app/Services/map.service';
+import { UserDetailsVo } from 'src/app/models/User-details-vo';
 
 @Component({
   selector: 'app-map',
@@ -17,7 +18,7 @@ export class MapComponent implements OnInit {
   projectName: any;
   selectedId: number;
   display: boolean ;
-  names:any;
+  names:UserDetailsVo[]=[];
   user_id: number;
   id: number;
   laptop: any;
@@ -57,13 +58,15 @@ export class MapComponent implements OnInit {
     // this.projectName = value;
     this.userService.getUsersPerProject().subscribe((data) => {
       console.log(data);
+      
       this.names = data;
+      
     })
   }
 
-  onChangeName(id: number) {
+  onChangeName(email: String) {
     
-    this.user_id = id;
+    this.user_id= this.names.find(index=>index.email==email).userId;
     
   }
 

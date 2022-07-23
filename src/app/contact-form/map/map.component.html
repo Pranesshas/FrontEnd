@@ -11,9 +11,9 @@
 </div>
 
 
-<div class="content">
+<div class="content" *ngIf="laptop">
     <div class="col-md-12">
-        <div class="col-md-6">
+        <div class="col-md-6" >
             <label>Product Type :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.product_type.name}} </label>
         </div>
@@ -83,7 +83,7 @@
        
         <div class="col-md-6">
             <label>Assigned to User :</label>&nbsp;&nbsp;&nbsp;
-            <label for="output" (click)="onClickUser()">{{ user.firstName+' '+user.lastName }}</label>
+            <label for="output" (click)="onClickUser()">{{ user.email }}</label>
         </div>
     </div>
 
@@ -97,14 +97,14 @@
         </div>
         <div class="col-md-6">
             <label>Assigned to User :</label>&nbsp;&nbsp;&nbsp;
-            <input type="text" list="productList" name="product" (change)="onChangeName($event.target.value)"/>
+            <input type="text" list="userList" name="user" (change)="onChangeName($event.target.value)"/>
 
-            <datalist id="productList" >
-            <select id="name" name="name"  [disabled]="display">
+            <datalist id="userList" >
+            
                 <option>Select User</option>
-                <option *ngFor="let name of names, let i = index" [value]="name.id" [disabled]="display">{{names[i].email}}</option>
+                <option *ngFor="let name of names, let i = index" [ngValue]="name.userId" [disabled]="display">{{name.email}}</option>
                 <!-- <option *ngIf="display" [value]="name" [disabled]="display" [ngModel]="name">{{name}}</option> -->
-            </select>
+          
         </datalist>
         </div>
     </div>
