@@ -37,9 +37,9 @@ export class AssetsService {
     return this.http.delete(`${this.baseUrl}` +"delete/"+ asset_id);
 
   }
-  searchAssets(searchObject:AssetDetailsVo,startPosition : number):Observable<any>
+  searchAssets(searchObject:AssetDetailsVo):Observable<any>
   {
-    return this.http.post(`${this.baseUrl}` +"asset/search/"+startPosition,searchObject);
+    return this.http.post(`${this.baseUrl}` +"asset/search",searchObject);
   }
 
   getAssetTypes():Observable<any>

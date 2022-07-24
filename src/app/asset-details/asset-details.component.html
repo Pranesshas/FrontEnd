@@ -144,7 +144,8 @@
   </form>
  </div>
 
-  <div class="table">
+  <div class="table"
+  infiniteScroll  [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
     <table>
       <thead>
         <tr>

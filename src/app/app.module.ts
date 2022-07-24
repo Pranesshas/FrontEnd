@@ -13,25 +13,26 @@ import { AssetDetailsComponent } from './asset-details/asset-details.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { AssetTypeComponent } from './asset-details/asset-type/asset-type.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactFormComponent,
     ShowTableComponent,
-   HeaderComponent,
+    HeaderComponent,
     MapComponent,
     AssetDetailsComponent,
     HomeComponent,
     UserComponent,
     AssetTypeComponent,
-   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

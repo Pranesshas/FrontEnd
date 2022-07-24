@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AssetsService } from '../Services/assets.service';
 import { AssetDetailsVo } from '../models/Asset-details-vo';
-import { MethodCall } from '@angular/compiler';
 
 @Component({
   selector: 'app-asset-details',
@@ -12,91 +11,107 @@ import { MethodCall } from '@angular/compiler';
 })
 export class AssetDetailsComponent implements OnInit {
 
-startPosition:number = 0;
-totalAssets : any; 
-assetTypes: any;
-  constructor(private assetsService:AssetsService ,
-    private router: Router,    
-    ) { }
+  totalAssets: any[] = [];
+  assetTypes: any;
+  private defaultPageSize : number = 10;
+  private searchObject: AssetDetailsVo = new AssetDetailsVo();
+
+
+
+  constructor(private assetsService: AssetsService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
-    let searchObject : AssetDetailsVo= new AssetDetailsVo();
-    this.searchList(searchObject,this.startPosition);
+    this.setDefaultPageSize();
+    this.searchList(this.searchObject);
     this.getAssetTypes();
   }
-  
-  getAssets(){
-    this.assetsService.getAssets().subscribe((data)=>{   
-      console.log(data);
-      this.totalAssets=data;
+
+  private setDefaultPageSize(){
+    this.searchObject.page_size = this.defaultPageSize;
+  }
+
+  getAssets() {
+    this.assetsService.getAssets().subscribe((data) => {
+      this.totalAssets = data;
     })
   }
-  getAssetTypes(){
-    this.assetsService.getAssetTypes().subscribe((data)=>{
+
+  onScroll(): void {
+      this.incrementPageNumber();
+      this.searchList(this.searchObject);
+  }
+
+  private incrementPageNumber(): void {
+    this.searchObject.page_number += 1;
+  }
+
+  private defaultPageNumber(): void {
+    this.searchObject.page_number = 1;
+  }
+
+  getAssetTypes() {
+    this.assetsService.getAssetTypes().subscribe((data) => {
       debugger
-      
-      this.assetTypes= data;
+
+      this.assetTypes = data;
       console.log(this.assetTypes);
     })
   }
-  onClick(id){
-    this.router.navigate(["/map/"+id]);
+  onClick(id) {
+    this.router.navigate(["/map/" + id]);
   }
-  
-  onSubmit(form: NgForm){  
-    debugger
+
+  onSubmit(form: NgForm) {
     let formValue = form.value;
-    let assetDetails :AssetDetailsVo = new AssetDetailsVo();
-    assetDetails.product_id=formValue.product_id;
-    assetDetails.product_name=formValue.product;
-    assetDetails.make=formValue.brand;
-    assetDetails.processor=formValue.processor;
-    assetDetails.product_number=formValue.product_no;
-    assetDetails.laptop_number=formValue.laptop_no;
-    assetDetails.ram=formValue.ram;
-    assetDetails.hdd=formValue.hdd;
-    assetDetails.cd_rom=formValue.cd_rom;
-    assetDetails.os=formValue.os;
-    assetDetails.model_no=formValue.model_no;
-    assetDetails.asset_date=formValue.date;
-    assetDetails.is_active=formValue.is_active;
-    assetDetails.is_available=formValue.is_available;
-    assetDetails.is_declared=formValue.is_declared;
-    assetDetails.is_old=formValue.is_old;
-    debugger
-    assetDetails.asset_number=formValue.asset_number;
-    assetDetails.product_type=form.value.product_type;
+    let assetDetails: AssetDetailsVo = new AssetDetailsVo();
+    assetDetails.product_id = formValue.product_id;
+    assetDetails.product_name = formValue.product;
+    assetDetails.make = formValue.brand;
+    assetDetails.processor = formValue.processor;
+    assetDetails.product_number = formValue.product_no;
+    assetDetails.laptop_number = formValue.laptop_no;
+    assetDetails.ram = formValue.ram;
+    assetDetails.hdd = formValue.hdd;
+    assetDetails.cd_rom = formValue.cd_rom;
+    assetDetails.os = formValue.os;
+    assetDetails.model_no = formValue.model_no;
+    assetDetails.asset_date = formValue.date;
+    assetDetails.is_active = formValue.is_active;
+    assetDetails.is_available = formValue.is_available;
+    assetDetails.is_declared = formValue.is_declared;
+    assetDetails.is_old = formValue.is_old;
+    assetDetails.asset_number = formValue.asset_number;
+    assetDetails.product_type = form.value.product_type;
     console.log(form.value.product_type);
 
     console.log(assetDetails);
     this.saveAssetDetails(assetDetails);
   }
 
-  
-  
-  onSearch(form: NgForm){
+
+
+  onSearch(form: NgForm) {
     let formValue = form.value;
-    let searchObject :AssetDetailsVo = new AssetDetailsVo();
-    debugger
-    searchObject.product_id=formValue.product_id;
-    searchObject.product_name=formValue.product;
-    searchObject.make=formValue.brand;
-    searchObject.processor=formValue.processor;
-    searchObject.product_number=formValue.product_no;
-    searchObject.laptop_number=formValue.laptop_no;
-    searchObject.ram=formValue.ram;
-    searchObject.hdd=formValue.hdd;
-    searchObject.cd_rom=formValue.cd_rom;
-    searchObject.os=formValue.os;
-    searchObject.model_no=formValue.model_no;
-    searchObject.asset_date=formValue.date;
-    searchObject.is_active=formValue.is_active;
-    searchObject.is_available=formValue.is_available;
-    searchObject.is_declared=formValue.is_declared;
-    searchObject.is_old=formValue.is_old;
-    searchObject.product_type=form.value.product_type;
-    debugger
-    searchObject.asset_number=formValue.asset_number;
+    this.searchObject.product_id = formValue.product_id;
+    this.searchObject.product_name = formValue.product;
+    this.searchObject.make = formValue.brand;
+    this.searchObject.processor = formValue.processor;
+    this.searchObject.product_number = formValue.product_no;
+    this.searchObject.laptop_number = formValue.laptop_no;
+    this.searchObject.ram = formValue.ram;
+    this.searchObject.hdd = formValue.hdd;
+    this.searchObject.cd_rom = formValue.cd_rom;
+    this.searchObject.os = formValue.os;
+    this.searchObject.model_no = formValue.model_no;
+    this.searchObject.asset_date = formValue.date;
+    this.searchObject.is_active = formValue.is_active;
+    this.searchObject.is_available = formValue.is_available;
+    this.searchObject.is_declared = formValue.is_declared;
+    this.searchObject.is_old = formValue.is_old;
+    this.searchObject.product_type = form.value.product_type;
+    this.searchObject.asset_number = formValue.asset_number;
 
 
     // if (formValue.product_id == null) {
@@ -189,27 +204,23 @@ assetTypes: any;
     // } else {
     //   searchObject.is_old= true;
     // }
-    
-    this.searchList(searchObject,this.startPosition); 
+    this.defaultPageNumber();
+    this.searchList(this.searchObject);
   }
-   searchList(searchObject,startPosition)
-   {
-    this.assetsService.searchAssets(searchObject,startPosition).subscribe((data) => {
-        console.log(data);
-        this.totalAssets=data.assetList;
-        console.log(data);
-       
+  searchList(searchObject: AssetDetailsVo): void {
+    this.assetsService.searchAssets(searchObject).subscribe((data) => {
+      this.totalAssets = !!searchObject.page_number ? this.totalAssets.concat(data.assetList) : data.assetList;
+      console.log(data);
     });
   }
 
-  saveAssetDetails(assetDetails){
-    this.assetsService.saveAssets(assetDetails).subscribe((data)=>{
+  saveAssetDetails(assetDetails) {
+    this.assetsService.saveAssets(assetDetails).subscribe((data) => {
       console.log(data);
-  });
+    });
   }
 
-  onCancel(form: NgForm)
-  { 
+  onCancel(form: NgForm) {
     form.reset();
   }
 

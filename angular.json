@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "aspApp"
+    }
+  },
+  "defaultProject": "aspApp",
+  "cli": {
+    "analytics": false
+  }
 }
