@@ -146,7 +146,7 @@ export class AssetTypeComponent implements OnInit {
         
         this.alertMsg=data.operationMessage;
         this.success=true;
-
+        
       } else {
         this.isError=true;
         this.alertMsg=data.operationMessage;

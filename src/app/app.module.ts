@@ -7,13 +7,14 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ShowTableComponent } from './show-table/show-table.component';
 import { FormsModule } from '@angular/forms';
 // import { AssetsComponent } from './assets/assets/assets.component';
-import { MapComponent } from './contact-form/map/map.component';
+import { MapComponent } from './user-map/map/map.component';
 import { HeaderComponent } from './header/header.component';
 import { AssetDetailsComponent } from './asset-details/asset-details.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { AssetTypeComponent } from './asset-details/asset-type/asset-type.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { UserMapComponent } from './user-map/user-map.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     HomeComponent,
     UserComponent,
     AssetTypeComponent,
+    UserMapComponent,
   ],
   imports: [
     BrowserModule,

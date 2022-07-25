@@ -22,32 +22,32 @@
             <label for="output">{{ laptop.make}}</label>
         </div>
     </div>
-    <div class="col-md-12" *ngIf="!!laptop.processor">
-        <div class="col-md-6" >
+    <div class="col-md-12" >
+        <div class="col-md-6" *ngIf="!!laptop.processor">
             <label>Processor :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.processor}}</label>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6"* ngIf="!!laptop.product_number">
             <label>Product Number :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.product_number}}</label>
         </div>
     </div>
     <div class="col-md-12">
-        <div class="col-md-6">
+        <div class="col-md-6" *ngIf="!!laptop.laptop_number">
             <label>Laptop Number :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.laptop_number}}</label>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" *ngIf="!!laptop.ram">
             <label>RAM :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.ram}}</label>
         </div>
     </div>
     <div class="col-md-12">
-        <div class="col-md-6">
+        <div class="col-md-6" *ngIf="!!laptop.hdd">
             <label>HDD :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.hdd}}</label>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" *ngIf="!!laptop.cd_rom">
             <label>CD_ROM :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.cd_rom }}</label>
         </div>
@@ -65,11 +65,11 @@
     </div>
 
     <div class="col-md-12">
-        <div class="col-md-6">
+        <div class="col-md-6" *ngIf="!!laptop.os">
             <label>Operating System :</label>&nbsp;&nbsp;
             <label for="output">{{ laptop.os }}</label>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" *ngIf="!!laptop.model_no">
             <label>Model Number :</label>&nbsp;&nbsp;&nbsp;
             <label for="output">{{ laptop.model_no }}</label>
         </div>
