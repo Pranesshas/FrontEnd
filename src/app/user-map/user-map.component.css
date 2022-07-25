@@ -1,0 +1,27 @@
+table 
+{
+    margin-top: 2em;
+    border-collapse: collapse;
+    margin: 25px 0;
+    box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.15);
+    width:100%;
+}
+
+.table thead tr {
+    background-color :rgb(15, 111, 207);
+    color: #ffffff;
+    text-align: left;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.table tr:hover {
+    background-color :rgb(226, 216, 216);
+}

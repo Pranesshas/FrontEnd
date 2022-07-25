@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { UserDetailsVo } from '../models/User-details-vo';
+import { UserMapVo } from '../models/User-map-vo';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,12 @@ export class UserService {
   getUserDetailsPerId(userId:number):Observable<any>{
     debugger
     return this.http.get(`${this.baseUrl}`+"getAssets/"+ userId);
+
+  }
+
+  getSearchResultsforMappingData(searchObj:UserMapVo):Observable<any>{
+    return this.http.post(`${this.baseUrl}`+"/userMap/search",searchObj);
+
 
   }
 }

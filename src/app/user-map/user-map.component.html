@@ -1,1 +1,41 @@
-<p>user-map works!</p>
+<div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <div class="table" style="margin-left:171px">
+            <div class="table"
+  infiniteScroll  [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+    
+          <table>
+            <thead>
+              <tr>
+                <th>Designation</th>
+                <th>Name</th>
+                <th>Asset Type</th>
+                <th>Make</th>
+                <th>Model Number</th>
+                <th>Product Number</th>
+                <th>Asset Mapped Date</th>             
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let result of results" >
+                <th scope="row">{{ result.project }}</th>
+                <td>
+                    <a (click)="onClickName(result.user_id)" >{{ result.name }}</a>
+                </td>              
+                <td>{{ result.product_type }}</td>
+                <td>{{ result.make }}</td>
+                <td>{{ result.model_no}}</td>
+                <td>{{ result.product_number }}</td>
+                <td>{{result.created_date}}</td>
+                
+            
+              </tr> 
+            </tbody>
+          </table>
+        </div>
+      </div>
+  
+      
+    </div>
+  </div>
