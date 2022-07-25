@@ -96,12 +96,8 @@
             <label>Asset Date</label>
             <input type="date" id="asset_date" name="asset_date" [ngModel]>  
           </div>
-      </div>
-        <!-- <div class="col-md-4">
-          <label for="date">Year</label>
-          <input id="date" type="text" name="date" [ngModel]>
-        </div> -->      
-      <div class="row">
+      </div><br/>
+      <!-- <div class="row">
         <div class="col-md-12">
           <div class="col-md-3">
             <div class="form-check">
@@ -136,12 +132,17 @@
             </div>
           </div> 
         </div>
-      </div><br/><br/>
+      </div><br/><br/> -->
     <div align="center">
         <button name="submit" value="submit"><strong>Search</strong></button>&nbsp;&nbsp;
         <button name="cancel" value="cancel" (click)="onCancel(f)"><strong>Cancel</strong></button>
     </div>
   </form>
+ </div>
+ <div style="margin:2px;">
+   <div class="col-md-12" align="right">
+    <label>{{assetcount}} Search Results</label>
+   </div>
  </div>
 
   <div class="table"

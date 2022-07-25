@@ -13,6 +13,7 @@ export class AssetDetailsComponent implements OnInit {
 
   totalAssets: any[] = [];
   assetTypes: any;
+  assetcount:number;
   private defaultPageSize : number = 10;
   private searchObject: AssetDetailsVo = new AssetDetailsVo();
 
@@ -26,7 +27,7 @@ export class AssetDetailsComponent implements OnInit {
     this.setDefaultPageSize();
     this.defaultPageNumber();
     this.searchList(this.searchObject);
-    this.getAssetTypes();
+    this.getAssetTypes(); 
   }
 
   private setDefaultPageSize(){
@@ -211,6 +212,7 @@ export class AssetDetailsComponent implements OnInit {
   searchList(searchObject: AssetDetailsVo): void {
     this.assetsService.searchAssets(searchObject).subscribe((data) => {
       this.totalAssets = !!searchObject.page_number ? this.totalAssets.concat(data.assetList) : data.assetList;
+      this.assetcount=data.assetCount;
       console.log(data);
     });
   }

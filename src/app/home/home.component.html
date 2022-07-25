@@ -44,15 +44,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         <table>
           <thead>
             <tr>
-              <th>Project</th>
+              <th>Designation</th>
               <th>Name</th>
               <th>Asset Type</th>
               <th>Make</th>
               <th>Model Number</th>
               <th>Product Number</th>
-              <th>Asset Mapped Date</th>
-            
-             
+              <th>Asset Mapped Date</th>             
             </tr>
           </thead>
           <tbody>
@@ -60,8 +58,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
               <th scope="row">{{ user.project }}</th>
               <td>
                   <a (click)="onClickName(user.user_id)" >{{ user.name }}</a>
-              </td>
-              
+              </td>              
               <td>{{ user.product_type }}</td>
               <td>{{ user.make }}</td>
               <td>{{ user.model_no}}</td>
