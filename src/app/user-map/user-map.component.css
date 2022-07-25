@@ -25,3 +25,40 @@ table
 .table tr:hover {
     background-color :rgb(226, 216, 216);
 }
+.content
+{
+    width:100%;
+    margin-top: 2em;
+    padding:2em;
+    border: 0.5px solid grey;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+label
+{
+    width:40%;
+    padding:1px;
+
+}
+
+input
+{
+    width: 12.5em;
+    padding:2px;
+}
+
+button
+{
+    height: 35px;
+    width: 9%;
+    border-radius: 2px;
+    border: 1px solid grey;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: inherit;   
+}
+
+button:active
+{
+    border-color: rgb(15, 111, 207);
+    box-shadow: 0px 2px 2px solid rgb(15, 111, 207);
+}

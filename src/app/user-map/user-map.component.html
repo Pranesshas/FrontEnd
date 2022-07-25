@@ -1,41 +1,78 @@
-<div class="w3-row-padding w3-padding-64 w3-container">
-    <div class="w3-content">
-      <div class="w3-twothird">
-        <div class="table" style="margin-left:171px">
-            <div class="table"
-  infiniteScroll  [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
-    
-          <table>
-            <thead>
-              <tr>
-                <th>Designation</th>
-                <th>Name</th>
-                <th>Asset Type</th>
-                <th>Make</th>
-                <th>Model Number</th>
-                <th>Product Number</th>
-                <th>Asset Mapped Date</th>             
-              </tr>
-            </thead>
-            <tbody>
-              <tr  *ngFor="let result of results" >
-                <th scope="row">{{ result.project }}</th>
-                <td>
-                    <a (click)="onClickName(result.user_id)" >{{ result.name }}</a>
-                </td>              
-                <td>{{ result.product_type }}</td>
-                <td>{{ result.make }}</td>
-                <td>{{ result.model_no}}</td>
-                <td>{{ result.product_number }}</td>
-                <td>{{result.created_date}}</td>
-                
-            
-              </tr> 
-            </tbody>
-          </table>
-        </div>
+<div class="content">
+  <form (ngSubmit)="onSearch(f)" #f="ngForm">
+    <div class="row">
+      <div class="col-md-4">
+        <label>Designation</label>
+        <input type="text" name="designation" [ngModel]>
       </div>
-  
-      
+      <div class="col-md-4">
+        <label>Name</label>
+        <input type="text" name="name" [ngModel]>
+      </div>
+      <div class="col-md-4">
+        <label>Asset Type</label>
+        <input type="text" name="asset_type" [ngModel]>
+      </div> 
+    </div><br/>
+    <div class="row">
+      <div class="col-md-4">
+        <label>Make</label>
+        <input type="text" name="make" [ngModel]>
+      </div>
+      <div class="col-md-4">
+        <label>Model Number</label>
+        <input type="text" name="model_number" [ngModel]>
+      </div>
+      <div class="col-md-4">
+        <label>Product Number</label>
+        <input type="text" name="product_number" [ngModel]>
+      </div>
+    </div><br/>
+    <div class="row">
+        <div class="col-md-4">
+          <label>Asset Mapped Date</label>
+          <input type="date" id="asset_date" name="maped_date" [ngModel]>  
+        </div>
+    </div>
+  <div align="center">
+      <button name="submit" value="submit"><strong>Search</strong></button>&nbsp;&nbsp;
+      <button name="cancel" value="cancel" (click)="onCancel(f)"><strong>Cancel</strong></button>
+  </div>
+</form>
+</div>
+
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <div class="table" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()">
+        <table>
+          <thead>
+            <tr>
+              <th>Designation</th>
+              <th>Name</th>
+              <th>Asset Type</th>
+              <th>Make</th>
+              <th>Model Number</th>
+              <th>Product Number</th>
+              <th>Asset Mapped Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let result of results">
+              <th scope="row">{{ result.project }}</th>
+              <td>
+                <a (click)="onClickName(result.user_id)">{{ result.name }}</a>
+              </td>
+              <td>{{ result.product_type }}</td>
+              <td>{{ result.make }}</td>
+              <td>{{ result.model_no}}</td>
+              <td>{{ result.product_number }}</td>
+              <td>{{ result.created_date }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+</div>
