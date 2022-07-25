@@ -24,6 +24,7 @@ export class AssetDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.setDefaultPageSize();
+    this.defaultPageNumber();
     this.searchList(this.searchObject);
     this.getAssetTypes();
   }
@@ -48,12 +49,12 @@ export class AssetDetailsComponent implements OnInit {
   }
 
   private defaultPageNumber(): void {
-    this.searchObject.page_number = 1;
+    this.searchObject.page_number = 0;
   }
 
   getAssetTypes() {
     this.assetsService.getAssetTypes().subscribe((data) => {
-      debugger
+      
 
       this.assetTypes = data;
       console.log(this.assetTypes);
@@ -105,7 +106,7 @@ export class AssetDetailsComponent implements OnInit {
     this.searchObject.cd_rom = formValue.cd_rom;
     this.searchObject.os = formValue.os;
     this.searchObject.model_no = formValue.model_no;
-    this.searchObject.asset_date = formValue.date;
+    this.searchObject.asset_date = formValue.asset_date;
     this.searchObject.is_active = formValue.is_active;
     this.searchObject.is_available = formValue.is_available;
     this.searchObject.is_declared = formValue.is_declared;
