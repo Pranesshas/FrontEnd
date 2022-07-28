@@ -17,8 +17,6 @@ export class AssetDetailsComponent implements OnInit {
   private defaultPageSize : number = 10;
   private searchObject: AssetDetailsVo = new AssetDetailsVo();
 
-
-
   constructor(private assetsService: AssetsService,
     private router: Router,
   ) { }
@@ -55,8 +53,6 @@ export class AssetDetailsComponent implements OnInit {
 
   getAssetTypes() {
     this.assetsService.getAssetTypes().subscribe((data) => {
-      
-
       this.assetTypes = data;
       console.log(this.assetTypes);
     })
@@ -91,8 +87,6 @@ export class AssetDetailsComponent implements OnInit {
     console.log(assetDetails);
     this.saveAssetDetails(assetDetails);
   }
-
-
 
   onSearch(form: NgForm) {
     let formValue = form.value;
