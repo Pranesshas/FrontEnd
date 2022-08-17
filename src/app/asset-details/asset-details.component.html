@@ -174,8 +174,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let asset of totalAssets"
-          [ngStyle]="{'background-color': (asset.is_available) ?  '#49d615' : '#ff0000'}">
+        <!-- [ngStyle]="{'background-color': (asset.is_available) ?  '#49d615' : '#ff0000'}" -->
+        <tr *ngFor="let asset of totalAssets">
           <td>{{ asset.product_id}}</td>
           <th scope="row">{{ asset.product_name }}</th>
           <td>
@@ -186,7 +186,11 @@
           <td>{{ asset.asset_number }}</td>
           <td>{{ asset.note}}</td>
           <td>{{asset.asset_date}}</td>
-          <td><span class="status text-danger">&bull;</span> {{asset.is_available}}</td>            
+          <td align="center">
+            <span [ngStyle]="{'color': (asset.is_available) ?  'green' : '#ff0000'}">&bull;</span> 
+            <!-- {{asset.is_available}} -->
+            <!-- <span style="color:red" ng-hide="asset.is_available">&bull;</span> -->
+          </td>            
         </tr>
       </tbody>
     </table>

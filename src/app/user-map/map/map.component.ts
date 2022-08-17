@@ -57,23 +57,18 @@ export class MapComponent implements OnInit {
   getUserDetails() {
     // this.projectName = value;
     this.userService.getUsersPerProject().subscribe((data) => {
-      console.log(data);
-      
+      console.log(data);      
       this.names = data;
       
     })
   }
 
-  onChangeName(email: String) {
-    
-    this.user_id= this.names.find(index=>index.email==email).userId;
-    
+  onChangeName(email: String) {   
+    this.user_id= this.names.find(index=>index.email==email).userId;   
   }
 
   getAssetsDetails() {
-
-    this.assetsService.getAssetsDetails(this.selectedId).subscribe((data) => {
-      
+    this.assetsService.getAssetsDetails(this.selectedId).subscribe((data) => {      
       console.log(data);
       this.laptop = data.product;
       if (!this.laptop._available) {
@@ -87,18 +82,15 @@ export class MapComponent implements OnInit {
 
   onSubmit() {
     let mapDetails: MapDetailsVo = new MapDetailsVo();
-    // let MapDetailsVo :mapDetails = new MapDetailsVo();
-    
+    // let MapDetailsVo :mapDetails = new MapDetailsVo();    
     mapDetails.asset_id = this.laptop.id;
     mapDetails.user_id = this.user_id;
     mapDetails.asset_type = this.laptop.product_type.id;
     this.mapService.saveMap(mapDetails).subscribe((data) => {
       // this.userService.getUsers().subscribe(( data ) =>{    
-      if (data !== undefined && data !== null && data.operationStatus === "SUCCESS") {
-        
+      if (data !== undefined && data !== null && data.operationStatus === "SUCCESS") {       
         this.success=true;
         this.alertMsg = 'Data has been submitted successfully !!';
-
       } else {
         this.success = false;
       }
@@ -110,8 +102,7 @@ export class MapComponent implements OnInit {
     let mapDetails: MapDetailsVo = new MapDetailsVo();
     mapDetails.asset_id = this.laptop.id;
     mapDetails.user_id = this.user.id;
-    mapDetails.asset_type = this.laptop.product_name;
-    
+    mapDetails.asset_type = this.laptop.product_name;    
     this.mapService.unAssignMap(mapDetails).subscribe((data) => {
       // this.userService.getUsers().subscribe(( data ) =>{      
       if (data !== undefined && data !== null && data.operationStatus === "SUCCESS") {
@@ -152,10 +143,10 @@ export class MapComponent implements OnInit {
     this.router.navigate(["../assets"]);
   }
 
-  onCancel()
-  {
-    this.ngOnInit();
-  }
+  // onCancel()
+  // {
+  //   this.ngOnInit();
+  // }
 
 }
 

@@ -12,7 +12,7 @@ userDetails : any;
 total: any;
 totalMapped:number;
 totalAssets:number;
-
+details:any;
 totalUsers:number;
 
   constructor(private router:Router,
@@ -26,13 +26,15 @@ totalUsers:number;
     this.router.navigate(["/assets"])
   }
   onClickName(id){
-    debugger
     this.router.navigate(["/user/"+id]);
   }
-  details:any;
+  onClick1()
+  {
+    this.router.navigate(["/userMap"]);
+  }
+  
   getDashboardDetails(){
     this.dashboardService.getDashboardDetails().subscribe((data)=>{
-      debugger
       console.log(data);
       this.details=data;
       for(let i=0;i<this.details.length;i++){
@@ -44,7 +46,6 @@ totalUsers:number;
 
   getDashboardMetrics(){
     this.dashboardService.getDashboardMetrics().subscribe((data)=>{
-      debugger
       this.total=data;
       this.totalMapped=this.total.totalMap;
       this.totalAssets=this.total.totalAssets;
