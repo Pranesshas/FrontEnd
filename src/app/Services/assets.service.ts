@@ -14,43 +14,43 @@ export class AssetsService {
 
   getAssets(): Observable<any>{
     
-    return this.http.get(`${this.baseUrl}`+"available");
+    return this.http.get(`${this.baseUrl}`+"api/available");
   }
   getProjects(): Observable<any>{
     
-    return this.http.get(`${this.baseUrl}`+"project");
+    return this.http.get(`${this.baseUrl}`+"api/project");
   }
 
   getAssetsDetails(assetId:number):Observable<any>{
-    return this.http.get(`${this.baseUrl}` +"get/"+ assetId);
+    return this.http.get(`${this.baseUrl}` +"api/get/"+ assetId);
 
   }
 
   saveAssets(formData: FormData):Observable<any>{
-    return this.http.post(`${this.baseUrl}` +"addAssets",formData);
+    return this.http.post(`${this.baseUrl}` +"api/addAssets",formData);
 
 
   }
 
  
   deleteAssets(asset_id:number):Observable<any>{
-    return this.http.delete(`${this.baseUrl}` +"delete/"+ asset_id);
+    return this.http.delete(`${this.baseUrl}` +"api/delete/"+ asset_id);
 
   }
   searchAssets(searchObject:AssetDetailsVo):Observable<any>
   {
-    return this.http.post(`${this.baseUrl}` +"asset/search",searchObject);
+    return this.http.post(`${this.baseUrl}` +"api/asset/search",searchObject);
   }
 
   getAssetTypes():Observable<any>
   {
-    return this.http.get(`${this.baseUrl}` +"getAssetTypes");
+    return this.http.get(`${this.baseUrl}` +"api/getAssetTypes");
   }
 
   
   saveAssetType(assetType :AssetTypeVo):Observable<any>
   {
-    return this.http.post(`${this.baseUrl}`+"saveAssetType",assetType);
+    return this.http.post(`${this.baseUrl}`+"api/saveAssetType",assetType);
   }
   getUsersPerProject(project:String): Observable<any>{
     

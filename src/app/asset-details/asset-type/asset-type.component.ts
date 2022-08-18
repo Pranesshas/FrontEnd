@@ -1,4 +1,4 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe, formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AssetDetailsVo } from 'src/app/models/Asset-details-vo';
@@ -29,7 +29,11 @@ export class AssetTypeComponent implements OnInit {
   ngOnInit(): void {
     this.getAssetTypes();
     console.log(this.asset_type);
+    this.is_confi=false;
+    this.assetValue="";
+    
   }
+  
   
   onClick()
   {
@@ -38,6 +42,7 @@ export class AssetTypeComponent implements OnInit {
 
   onCancel()
   {
+    
     this.show=false;
   }
  
@@ -48,9 +53,7 @@ export class AssetTypeComponent implements OnInit {
   }
 
   getAssetTypes(){
-    this.assetsService.getAssetTypes().subscribe((data)=>{
-      debugger
-      
+    this.assetsService.getAssetTypes().subscribe((data)=>{     
       this.assetTypes= data;
       console.log(this.assetTypes);
     })
@@ -58,7 +61,6 @@ export class AssetTypeComponent implements OnInit {
   
   onSubmit(){
     this.saveAssets();
-    // this.show=false;
   }
 
   onSearch(form:NgForm)
@@ -68,26 +70,24 @@ export class AssetTypeComponent implements OnInit {
   saveAssets(){
     console.log(this.is_confi);
     let assetType :AssetTypeVo = new AssetTypeVo();
-    debugger
     assetType.asset_name=this.assetValue;
     assetType.is_confi=this.is_confi;
     if(!!assetType.asset_name && assetType.asset_name!=""){
       this.assetsService.saveAssetType(assetType).subscribe((data)=>{
         console.log(data);
         this.ngOnInit();
-      });
-      
+        this.success=true;
+        this.alertMsg="New asset type added sucessfully !";
+      });      
     }
   }
 
-  checkAsset():AssetTypeVo{
-   
+  checkAsset():AssetTypeVo{  
     return this.assetTypes.find(asset=>asset.id==this.asset_type)
   }
 
   onSave(form: NgForm){  
     let formValue = form.value;
-    debugger  
     let assetDetails :AssetDetailsVo = new AssetDetailsVo();
     assetDetails.asset_number=formValue.asset_number;
     assetDetails.product_name=formValue.product;
@@ -121,15 +121,10 @@ export class AssetTypeComponent implements OnInit {
 
   saveAssetDetails(assetDetails){
     const formData = new FormData();
-    debugger
     if(this.file != undefined){
       // Set image name
       const fileName = "PURCHASE"+".xlsx" ;
-      // Get blob image from base64string
-     
-
-
-      
+      // Get blob image from base64string      
       // this.client = form.value;
       formData.append('assetDetails', JSON.stringify(assetDetails));
       formData.append('file',this.file, this.file.name);
@@ -141,15 +136,12 @@ export class AssetTypeComponent implements OnInit {
     
     this.assetsService.saveAssets(formData).subscribe((data)=>{
       console.log(data);
-      debugger
-      if(data !== undefined && data !== null &&  data.operationStatus === "SUCCESS"){
-        
-        this.alertMsg=data.operationMessage;
-        this.success=true;
-        
+      if(data !== undefined && data !== null &&  data.operationStatus === "SUCCESS"){       
+        this.alertMsg="New asset added Successfully !!";
+        this.success=true;        
       } else {
-        this.isError=true;
-        this.alertMsg=data.operationMessage;
+        // this.isError=true;
+        // this.alertMsg= "Some fields are missing !!";
       }
       
   });
@@ -158,7 +150,6 @@ export class AssetTypeComponent implements OnInit {
 onChange(event) {
   this.file = event.target.files[0];
 }
-
 
 }
 

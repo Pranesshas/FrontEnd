@@ -1,36 +1,36 @@
-<div class="container">
-  <div class="row" *ngIf="show">
-    <h2> Add New Asset Type</h2>
-    <div class="col-md-12" >
-      <div class="col-md-4">
-        <label for="assetType">Enter asset Type</label>
-          <input type="text" id="assetType"  [(ngModel)]="assetValue"/>
-      </div>
-      <div class="col-md-2">
-        <label  for="is_confi" style="width:30%">Is_Config</label>
-        <input class="form-check-input" type="checkbox" name="is_confi" [(ngModel)]="is_confi">
-      </div>
-    </div>
-      <div class="col-md-12" align="center">
-        <button class="btn btn-primary" id="article-update-button" type="submit" (click)="onSubmit()">Submit</button>&nbsp;&nbsp;
-        <button class="btn btn-primary" id="article-update-button"  type="cancel" (click)="onCancel()">Cancel</button>
-      </div>
-  </div>
-</div>
-
-
 <div class="alert alert-danger alert-dismissible" *ngIf="isError" style="margin-top:2em;">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>{{ alertMsg }}</strong>
 </div>
-
 <div class="alert alert-success alert-dismissible" *ngIf="success" style="margin-top:2em;">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>{{ alertMsg }}</strong>
 </div>
 
+<div class="container">
+  <div class="row" *ngIf="show">
+    <h2> Add New Asset Type</h2>
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <label for="assetType">Enter asset Type</label>
+        <input type="text" id="assetType" [(ngModel)]="assetValue" />
+      </div>
+      <div class="col-md-2">
+        <label for="is_confi" style="width:30%">Is_Config</label>
+        <input class="form-check-input" type="checkbox" name="is_confi" [(ngModel)]="is_confi">
+      </div>
+    </div>
+    <div class="col-md-12" align="center">
+      <button class="btn btn-primary" id="article-update-button" type="submit"
+        (click)="onSubmit()">Submit</button>&nbsp;&nbsp;
+      <button class="btn btn-primary" id="article-update-button" type="cancel" (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <div class="row" *ngIf="!show">
-  <button class="btn btn-primary" id="article-update-button" name="add_asset" (click)="onClick()" style="width:100px;">Add Asset</button>
+  <button class="btn btn-primary" id="article-update-button" name="add_asset" (click)="onClick()"
+    style="width:100px;">Add Asset</button>
 </div>
 
 <!-- <h2>Existing Assets</h2><br/>
@@ -57,12 +57,12 @@
 <!-- <div class="col-md-4">
     <label for="product_type">Product Type</label>
     <select id="product_type" name="product_type" [(ngModel)]="asset_type">
-      <option *ngFor="let asset of assetTypes"[value]="asset.id">{{asset.name}}</option>
+      <option *ngFor="let asset of assetTypes" [value]="asset.id">{{asset.name}}</option>
     </select>
 </div><br/><br/> -->
 
 <form (ngSubmit)="onSave(f)" #f="ngForm" *ngIf="asset_type">
-  <div>
+  <div *ngIf="checkAsset()._configuration">
     <div class="col-md-12">
       <div class="col-md-4">
         <label for="asset_number">Asset Number</label>
@@ -103,8 +103,8 @@
         <input id="product_no" type="text" name="product_no" [ngModel]>
       </div>
     </div>
-    <div class="col-md-12">
-      <div class="col-md-4" *ngIf="checkAsset()._configuration">
+    <div class="col-md-12" *ngIf="checkAsset()._configuration">
+      <div class="col-md-4">
         <label for="RAM">RAM</label>
         <select id="ram" name="ram" [ngModel]>
           <option>32 Gb</option>
@@ -146,6 +146,11 @@
           <option>DVD RW</option>
         </select>
       </div>
+      <div class="col-md-4">
+        <label for="asset_value">Asset Value</label>
+        <span>&#8377;</span>&nbsp;
+        <input id="asset_value" type="text" name="asset_value" [ngModel]>
+      </div>
     </div>
     <div class="col-md-12">
       <div class="col-md-4">
@@ -153,9 +158,61 @@
         <textarea name="note" id="note" [ngModel]></textarea>
       </div>
       <div class="col-md-4">
+        <div class="col-xs-2">
+          <span style="align-items:center;"><strong>Invoice</strong></span>
+        </div>
+        <div class="col-md-3">
+          <input class="form-control" type="file" (change)="onChange($event)" style="height:35px;">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="checkAsset()._configuration == false">
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <label for="asset_number">Asset Number</label>
+        <input id="asset_number" type="text" name="asset_number" [ngModel]>
+      </div>
+      <div class="col-md-4">
+        <label for="Brand">Brand</label>
+        <select id="brand" name="brand" [ngModel]>
+          <option>LENOVO</option>
+          <option>Lenovo ThinkBook</option>
+          <option>Lenovo V15 G2 ITL</option>
+          <option>Lenovo</option>
+          <option>Dell</option>
+          <option>HP</option>
+          <option>LENOVO</option>
+          <option>HP 240 G8</option>
+          <option>HP 240 G7</option>
+          <option>HP Pavilion</option>
+          <option>Inspiron N5010 A10</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="laptop_no">Serial Number</label>
+        <input id="laptop_no" type="text" name="laptop_no" [ngModel]>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <label for="model_no">Model Number</label>
+        <input id="model_no" type="text" name="model_no" [ngModel]>
+      </div>
+      <div class="col-md-4">
+        <label>Asset Date</label>
+        <input type="date" id="asset_date" name="asset_date" [ngModel]>
+      </div>
+      <div class="col-md-4">
         <label for="asset_value">Asset Value</label>
         <span>&#8377;</span>&nbsp;
         <input id="asset_value" type="text" name="asset_value" [ngModel]>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <label>Notes</label>
+        <textarea name="note" id="note" [ngModel]></textarea>
       </div>
       <div class="col-md-4">
         <div class="col-xs-2">
@@ -163,19 +220,21 @@
         </div>
         <div class="col-md-3">
           <input class="form-control" type="file" (change)="onChange($event)" style="height:35px;">
-        </div>   
-      </div>    
-    </div>
-
-    <div class="row" align="center">
-      <div class="col-md-12">
-        <button class="btn btn-primary" id="article-update-button" type="submit" style="size:100px" >Save</button>&nbsp;&nbsp;
-        <button class="btn btn-primary" id="article-update-button"  (click)="onClear(f)">Cancel</button>
+        </div>
       </div>
-    </div><br />
-  </div>
-
+    </div>
+  </div><br /><br />
+  
+  <div class="row" align="center">
+    <div class="col-md-12">
+      <button class="btn btn-primary" id="article-update-button" type="submit"
+        style="size:100px">Save</button>&nbsp;&nbsp;
+      <button class="btn btn-primary" id="article-update-button" (click)="onClear(f)">Cancel</button>
+    </div>
+  </div><br />
 </form>
+
+
 <!-- <button (click)="onUpload()"
         class="btn btn-success">
         Upload

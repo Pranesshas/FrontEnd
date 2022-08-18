@@ -11,10 +11,10 @@ export class MapService {
   constructor(private http: HttpClient) { }
 
   saveMap(mapDetails: MapDetailsVo): Observable<any> {
-    return this.http.post(`${this.baseUrl}` + "mapUser", mapDetails);
+    return this.http.post(`${this.baseUrl}` + "api/mapUser", mapDetails);
   }
 
   unAssignMap(mapDetails: MapDetailsVo): Observable<any> {
-    return this.http.post(`${this.baseUrl}` + "unassignUser", mapDetails);
+    return this.http.post(`${this.baseUrl}` + "api/unassignUser", mapDetails);
   }
 }
